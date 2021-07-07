@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index');
 
-require('./db');
+require('./db/index');
 
 const server = express();
 
