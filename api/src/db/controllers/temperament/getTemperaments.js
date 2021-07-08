@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const axios = require('axios').default;
 const { Temperament } = require('../../index');
 const { API_URL } = require('../../../constants');
@@ -9,8 +10,8 @@ module.exports = {
     try {
       const temperaments = await axios.get(`${API_URL}?api_key=${API_KEY}`);
       const temperamentsList = temperaments.data.map((breed) => breed.temperament);
-      const temperamentsInDb = await temperamentsList.forEach((temp) => Temperament.create({ name: temp }));
-      res.json(temperamentsInDb);
+      const temperamentsToDb = await temperamentsList.forEach((temp) => Temperament.create({ name: temp }));
+      return res.json(temperamentsToDb);
     } catch (e) {
       next(e);
     }
