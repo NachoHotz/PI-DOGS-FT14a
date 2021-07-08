@@ -1,16 +1,13 @@
-const { Dog } = require('../../index');
+const { Dog, Temperament } = require('../../index');
 
 module.exports = {
-  getBreedByIdDb: async (req, res, next) => {
+  getBreedByIdDb: async (breedId) => {
     try {
-      const { breedId } = Number(req.params.id);
-      const breedDetail = await Dog.findByPk(breedId);
-
-      if (!breedDetail) return res.status(404).send('Breed not found.');
-
+      const breedDetail = await Dog.findByPk(breedId, { include: Temperament });
+      if (!breedDetail) return 'Breed not found.';
       return breedDetail;
-    } catch (e) {
-      next(e);
+    } catch (error) {
+      console.log(error);
     }
   },
 };

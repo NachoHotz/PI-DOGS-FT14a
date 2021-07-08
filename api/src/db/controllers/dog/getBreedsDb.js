@@ -1,11 +1,13 @@
-const { Dog } = require('../../index');
+/* eslint-disable consistent-return */
+const { Dog, Temperament } = require('../../index');
 
 module.exports = {
-  getBreedsDb: async (req, res, next) => {
+  getBreedsDb: async () => {
     try {
-      res.json(Dog.findAll());
+      const breeds = await Dog.findAll({ include: Temperament });
+      return breeds;
     } catch (e) {
-      next(e);
+      console.log(e);
     }
   },
 };

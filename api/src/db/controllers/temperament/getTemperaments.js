@@ -9,7 +9,7 @@ module.exports = {
     try {
       const temperaments = await axios.get(`${API_URL}?api_key=${API_KEY}`);
       const temperamentsList = temperaments.data.map((breed) => breed.temperament);
-      const temperamentsInDb = await temperamentsList.forEach((temp) => Temperament.create(temp));
+      const temperamentsInDb = await temperamentsList.forEach((temp) => Temperament.create({ name: temp }));
       res.json(temperamentsInDb);
     } catch (e) {
       next(e);
