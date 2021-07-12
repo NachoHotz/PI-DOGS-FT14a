@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* eslint-disable import/no-extraneous-dependencies */
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');

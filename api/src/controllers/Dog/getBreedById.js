@@ -10,12 +10,15 @@ module.exports = {
       const breedApi = await axios.get(`${API_URL}`);
 
       const breedApiId = breedApi.data.find((breed) => breed.id === breedId);
-      if (breedApiId) return res.json(breedApiId);
+      const breedDbId = getBreedByIdDb(breedId);
 
-      const breedIdDb = getBreedByIdDb(breedId);
-      if (breedIdDb) return res.json(breedIdDb);
-
-      return res.send('Breed not found');
+      if (breedApiId) {
+        res.json(breedApiId);
+      } else if (breedDbId) {
+        res.json(breedDbId);
+      } else {
+        res.send('Breed not found.');
+      }
     } catch (e) {
       next(e);
     }
