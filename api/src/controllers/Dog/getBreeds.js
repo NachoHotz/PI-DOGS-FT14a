@@ -56,7 +56,6 @@ module.exports = {
         if (breedUniqueDb) {
           return res.json(breedUniqueDb);
         }
-
         return res.send('Breed not found');
       }
 

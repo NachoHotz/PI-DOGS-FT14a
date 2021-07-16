@@ -6,7 +6,7 @@ const { getBreedByIdDb } = require('../../db/controllers/dog/getBreedsByIdDb');
 module.exports = {
   getBreedById: async (req, res, next) => {
     try {
-      const breedId = Number(req.params.id);
+      const breedId = req.params.id;
       const breedApi = await axios.get(`${API_URL}`);
 
       const breedApiId = breedApi.data.find((breed) => breed.id === breedId);
