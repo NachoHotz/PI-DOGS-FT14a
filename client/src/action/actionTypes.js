@@ -1,6 +1,7 @@
+/* eslint-disable func-names */
 import axios from 'axios';
 import {
-  GET_BREEDS,
+  GET_ALL_BREEDS,
   GET_BREED_DETAIL,
   NEXT_PAGE,
   PREVIOUS_PAGE,
@@ -8,18 +9,24 @@ import {
 
 const SERVER = 'http://localhost:3001';
 
-export const getBreeds = async (dispatch) => {
-  try {
-    const breeds = await axios.default.get(`${SERVER}/dogs`);
-    if (breeds) dispatch({ type: GET_BREEDS, payload: breeds.data });
-    alert('There was an error, please reload the page.');
-  } catch (e) {
-    console.log(e);
-  }
-};
+export function getBreeds(name, sort, creator) {
+  return async function (dispatch) {
+    try {
+      const breeds = await axios.get(`${SERVER}/dogs?name=${name}&creator=${creator}&sort=${sort}`);
+      dispatch({ type: GET_ALL_BREEDS, payload: breeds.data });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+}
 
-export const getBreedDetail = async (dispatch, breedId) => {};
-
-export const getNextBreeds = (dispatch) => {};
-
-export const getPreviousBreeds = (dispatch) => {};
+export function getBreedDetailId(id) {
+  return async function (dispatch) {
+    try {
+      const breedDetail = await axios.get(`${SERVER}/dogs/${id}`);
+      dispatch({ type: GET_BREED_DETAIL, payload: breedDetail.data });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+}
