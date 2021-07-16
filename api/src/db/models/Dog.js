@@ -18,17 +18,17 @@ module.exports = (sequelize) => {
     },
 
     height: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
 
     weight: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
 
     lifespan: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
 
     img: {

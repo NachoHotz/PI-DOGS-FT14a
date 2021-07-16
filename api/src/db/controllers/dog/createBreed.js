@@ -1,17 +1,13 @@
 /* eslint-disable consistent-return */
 const { v4: uuidv4 } = require('uuid');
-const { Dog, Temperament } = require('../../index');
+const { Dog } = require('../../index');
 
 module.exports = {
   createBreed: async (req, res, next) => {
     try {
       const newBreed = req.body;
-
-      if (!newBreed.name || newBreed.height || newBreed.weight) {
-        return res.send('Name, height and weight fields are required. Please make sure that all fields are completed.');
-      }
-
       const dogExist = await Dog.findOne({ where: { name: newBreed.name } });
+
       if (dogExist) {
         return res.send('There already exists a dog breed with the sama name. Please choose another one.');
       }

@@ -1,5 +1,6 @@
-const { Dog, conn } = require('../../src/db.js');
+/* eslint-disable no-undef */
 const { expect } = require('chai');
+const { Dog, conn } = require('../../src/db/index');
 
 describe('Dog model', () => {
   before(() => conn.authenticate()
