@@ -1,0 +1,27 @@
+body {
+  background-image: url('./pexels-chevanon-photography-1108099.jpg');
+  background-repeat: no-repeat;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 250px;
+}
+
+.link {
+  position: absolute;
+  border-radius: 10px;
+  left: 45%;
+  top: 50%;
+  height: 10%;
+  width: 10%;
+  font-size: 2ch;
+  font-weight: bold;
+}
+
+.link:hover {
+  background-color: black;
+  color: white;
+}
