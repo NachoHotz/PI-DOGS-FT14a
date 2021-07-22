@@ -1,81 +1,74 @@
 /* eslint-disable consistent-return */
 /* eslint-disable max-len */
+/* eslint-disable no-plusplus */
 const axios = require('axios').default;
+const { Op } = require('sequelize');
 const { API_URL } = require('../../constants');
 const { getBreedsDb } = require('../../db/controllers/dog/getBreedsDb');
-const { getBreedByNameDb } = require('../../db/controllers/dog/getBreedByNameDb');
+const { Dog, Temperament } = require('../../db/index');
 
 const { API_KEY } = process.env;
 
 module.exports = {
   getBreeds: async (req, res, next) => {
     try {
-      const { sort, name, creator } = req.query;
+      const { name, creator } = req.query;
 
-      if (sort === 'asc') {
-        const breedsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
-        const breedsDb = getBreedsDb();
+      if (creator === 'all') {
+        const dogsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
+        const dogsDb = getBreedsDb();
 
-        Promise.all([breedsApi, breedsDb])
+        Promise.all([dogsApi, dogsDb])
           .then((response) => {
-            const [breedsApiResponse, breedsDbResponse] = response;
-            const breedsList = breedsDbResponse.concat(breedsApiResponse.data);
-            return res.json(breedsList.sort((a, b) => {
-              if (a.name < b.name) return -1;
-              if (a.name > b.name) return 1;
-              return 0;
-            }));
-          })
-          .catch((error) => console.log(error));
-      }
-
-      if (sort === 'desc') {
-        const breedsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
-        const breedsDb = getBreedsDb();
-
-        Promise.all([breedsApi, breedsDb])
-          .then((response) => {
-            const [breedsApiResponse, breedsDbResponse] = response;
-            const breedsList = breedsDbResponse.concat(breedsApiResponse.data);
-            return res.json(breedsList.sort((a, b) => {
-              if (a.name < b.name) return 1;
-              if (a.name > b.name) return -1;
-              return 0;
-            }));
-          })
-          .catch((error) => console.log(error));
-      }
-
-      if (name) {
-        const breedUniqueApi = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}&api_key=${API_KEY}`);
-        if (breedUniqueApi) {
-          return res.json(breedUniqueApi.data);
-        }
-
-        const breedUniqueDb = getBreedByNameDb(name);
-        if (breedUniqueDb) {
-          return res.json(breedUniqueDb);
-        }
-        return res.send('Breed not found');
-      }
-
-      if (!creator || creator === 'all') {
-        const breedsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
-        const breedsDb = getBreedsDb();
-
-        Promise.all([breedsApi, breedsDb])
-          .then((response) => {
-            const [breedsApiResponse, breedsDbResponse] = response;
-            return res.json(breedsDbResponse.concat(breedsApiResponse.data));
+            const [dogsApiResponse, dogsDbResponse] = response;
+            return res.json(dogsDbResponse.concat(dogsApiResponse.data));
           });
-      } else if (creator === 'user') {
-        return res.json(getBreedsDb());
-      } else if (creator === 'genuine') {
-        const breedsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
-        return res.json(breedsApi.data);
+      } else if (creator === 'created') {
+        const dogsDb = getBreedsDb();
+        Promise.all([dogsDb])
+          .then((response) => {
+            const [dogsDbResponse] = response;
+            return res.json(dogsDbResponse);
+          })
+          .catch((e) => next(e));
+      }
+
+      if (!name) {
+        const dogsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
+        const dogsDb = getBreedsDb();
+
+        Promise.all([dogsApi, dogsDb])
+          .then((response) => {
+            const [dogsApiResponse, dogsDbResponse] = response;
+            return res.json(dogsDbResponse.concat(dogsApiResponse.data));
+          });
+      } else {
+        const dogsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
+        const dogsDb = await Dog.findAll({
+          where: {
+            name: {
+              [Op.iLike]: `%${name}%`,
+            },
+          },
+          include: { model: Temperament },
+        });
+        Promise.all([dogsApi, dogsDb])
+          .then((response) => {
+            const [dogsApiResponse, dogsDbResponse] = response;
+            const result = dogsDbResponse.concat(dogsApiResponse.data);
+
+            const finalResults = [];
+
+            for (let i = 0; i < result.length; i++) {
+              if (result[i].name.toLowerCase().includes(name.toLowerCase())) {
+                finalResults.push(result[i]);
+              }
+            }
+            res.json(finalResults);
+          });
       }
     } catch (e) {
-      next(e);
+      res.status(500).send('There was an error, please try again.');
     }
   },
 };

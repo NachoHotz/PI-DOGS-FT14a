@@ -1,24 +1,26 @@
 /* eslint-disable consistent-return */
 const axios = require('axios').default;
 const { API_URL } = require('../../constants');
-const { getBreedByIdDb } = require('../../db/controllers/dog/getBreedsByIdDb');
+const { Dog, Temperament } = require('../../db/index');
+
+const { API_KEY } = process.env;
 
 module.exports = {
   getBreedById: async (req, res, next) => {
     try {
-      const breedId = req.params.id;
-      const breedApi = await axios.get(`${API_URL}`);
+      if (req.params.id.length < 4) {
+        const breedId = Number(req.params.id);
+        const breedApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
 
-      const breedApiId = breedApi.data.find((breed) => breed.id === breedId);
-      const breedDbId = getBreedByIdDb(breedId);
+        const detail = breedApi.data.find((breed) => breed.id === breedId);
 
-      if (breedApiId) {
-        res.json(breedApiId);
-      } else if (breedDbId) {
-        res.json(breedDbId);
-      } else {
-        res.send('Breed not found.');
+        if (detail) {
+          return res.json(detail);
+        }
       }
+      const breedId = req.params.id;
+      const breedDbId = await Dog.findByPk(breedId, { include: { model: Temperament } });
+      return res.json(breedDbId);
     } catch (e) {
       next(e);
     }
