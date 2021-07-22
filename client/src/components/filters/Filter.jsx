@@ -12,7 +12,6 @@ export default function Filter() {
   const dispatch = useDispatch();
   const temperaments = useSelector((state) => state.temperaments);
   const breeds = useSelector((state) => state.allBreeds);
-  console.log(breeds);
 
   const [selectedTemp, setSelectedTemp] = useState('');
   const [selectedCreator, setSelectedCreator] = useState('');
@@ -28,10 +27,7 @@ export default function Filter() {
 
   if (selectedTemp) {
     const filtered = [];
-    console.log(selectedTemp);
-
     breeds?.forEach((b) => {
-      console.log(b);
       if (b.id.length > 3) {
         b.temperaments.map((t) => (t.name === selectedTemp ? filtered.push(b) : null));
       }
@@ -39,7 +35,6 @@ export default function Filter() {
         filtered.push(b);
       }
     });
-    console.log(filtered);
     dispatch(getBreedsByTemp(filtered));
     setSelectedTemp('');
   }
