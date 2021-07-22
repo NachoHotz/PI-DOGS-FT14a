@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 20px;
+  width: fit-content;
+  margin-left: 480px;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  height: 220px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.link {
+  display: flex;
+  position: absolute;
+  padding: 10px;
+  margin-left: 50px;
+  margin-top: 15px;
+  font-weight: bolder;
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  background-color: black;
+  color: white;
+  border-radius: 15%;
+  padding: 10px;
+}
+
+.temperaments {
+  display: flex;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+}
