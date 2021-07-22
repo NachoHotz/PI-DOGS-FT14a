@@ -1,0 +1,68 @@
+body {
+  background-color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+input {
+  height: 20px;
+  font-size: 15px;
+  border-radius: 5px;
+  box-shadow: white;
+}
+
+.link {
+  display: flex;
+  position: absolute;
+  padding: 10px;
+  margin-left: 150px;
+  margin-top: 15px;
+  font-weight: bolder;
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.error {
+ text-align: center;
+  color: #ff0000;
+  background-color: black;
+  font-size: 10px;
+  font-weight: bold;
+  text-shadow: 1px 1px #000000;
+  letter-spacing: 1px;
+}
+
+.select {
+  margin-top: 10px;
+  font-weight: bolder;
+}
+
+.selectCheck {
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.createbtn {
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 10px;
+  height: 30px;
+  width: 70px
+}
+
+.createbtn:hover {
+  background-color: black;
+  color: white;
+}
