@@ -11,7 +11,7 @@ describe('Dog model', () => {
     beforeEach(() => Dog.sync({ force: true }));
     describe('name', () => {
       it('should throw an error if name is null', (done) => {
-        Dog.create({})
+        Dog.create({ name: '' })
           .then(() => done(new Error('It requires a valid name')))
           .catch(() => done());
       });
