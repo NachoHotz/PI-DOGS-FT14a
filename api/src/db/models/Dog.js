@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const { DataTypes, UUIDV4 } = require('sequelize');
+const { DataTypes, Sequelize, UUIDV4 } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
@@ -7,7 +7,7 @@ module.exports = (sequelize) => {
   sequelize.define('dog', {
     id: {
       type: DataTypes.UUID,
-      deaultValue: UUIDV4,
+      defaultValue: Sequelize.UUIDV4,
       allowNull: false,
       primaryKey: true,
     },
@@ -27,12 +27,12 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
-    lifespan: {
+    life_span: {
       type: DataTypes.STRING,
     },
 
-    img: {
-      type: DataTypes.STRING,
+    image: {
+      type: DataTypes.JSONB,
     },
-  });
+  }, { timestamps: false });
 };
