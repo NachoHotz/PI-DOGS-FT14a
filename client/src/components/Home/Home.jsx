@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBreeds, getBreedsByName } from '../../action/actionTypes';
+import { getBreeds } from '../../action/actionTypes';
 import Nav from '../Nav/Nav';
-import Filter from '../filters/Filter';
+import Filter from '../Filters/Filter';
 import Order from '../Order/Order';
+import Searchbar from '../Searchbar/Searchbar';
 import Style from './Home.module.css';
 
 export default function Home() {
@@ -12,7 +13,6 @@ export default function Home() {
   const breeds = useSelector((state) => state.allBreeds);
   const filteredBreeds = useSelector((state) => state.breedsSearch);
 
-  const [name, setName] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8);
 
@@ -124,38 +124,12 @@ export default function Home() {
     pageDecrementBtn = <li onClick={handleNextClick}> &hellip;  </li>;
   }
 
-  const handleInputChange = (e) => {
-    e.preventDefault();
-    setName(e.target.value);
-  };
-
-  const handleSearchClick = (e) => {
-    e.preventDefault();
-    if (name === '') return alert('Please type a name');
-    dispatch(getBreedsByName(name));
-    setName('');
-  };
-
   return (
     <main>
       <Nav />
       <Filter />
       <Order />
-      <section className={Style.search}>
-        <input
-          type="search"
-          placeholder="Name"
-          onChange={(e) => handleInputChange(e)}
-        />
-        <button
-          type="submit"
-          value="Search"
-          className={Style.searchbtn}
-          onClick={(e) => handleSearchClick(e)}
-        >
-          Search
-        </button>
-      </section>
+      <Searchbar />
       <ul className={Style.pageNumbers}>
         <li>
           <button

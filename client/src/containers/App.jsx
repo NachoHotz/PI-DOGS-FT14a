@@ -13,7 +13,7 @@ function App() {
       <Route exact path="/home" component={Home} />
       <Switch>
         <Route exact path="/home/creation" component={BreedCreation} />
-        <Route exact path="/home/:id" render={({ match }) => <BreedDetail id={match.params.id} />} />
+        <Route exact path="/home/:id" component={BreedDetail} />
       </Switch>
     </div>
   );

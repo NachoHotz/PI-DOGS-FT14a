@@ -49,17 +49,9 @@ export function getBreedsByTemp(filtered) {
 }
 
 export function getBreedsCreator(creator) {
-  return function (dispatch) {
-    if (creator === 'all') {
-      return dispatch({ type: 'all' });
-    }
-    if (creator === 'created') {
-      return dispatch({ type: 'created' });
-    }
-    if (creator === 'notcreated') {
-      return dispatch({ type: 'notcreated' });
-    }
-  };
+  if (creator === 'all') return { type: 'all' };
+  if (creator === 'created') return { type: 'created' };
+  if (creator === 'notcreated') return { type: 'notcreated' };
 }
 
 export function getTemperaments() {

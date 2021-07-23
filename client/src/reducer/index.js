@@ -28,20 +28,14 @@ const rootReducer = (state = initialState, action) => {
     case GET_BREED_DETAIL: return { ...state, breedDetail: action.payload };
     case GET_TEMPERAMENTS: return { ...state, temperaments: action.payload };
     case CREATE_BREED: return { ...state, allBreeds: action.payload };
-    case 'all': return { ...state, breedsSearch: state.allBreeds };
     case GET_BREEDS_TEMP: return { ...state, breedsSearch: action.payload };
-    case 'created': return {
-      ...state,
-      breedsSearch: state.allBreeds.filter(breed => breed.id.length > 3).sort(),
-    };
-    case 'notcreated': return {
-      ...state,
-      breedsSearch: state.allBreeds.filter(breed => breed.id < 300).sort(),
-    };
     case SORT_NAME_ASC: return { ...state, allBreeds: action.payload };
     case SORT_NAME_DESC: return { ...state, allBreeds: action.payload };
     case SORT_WEIGHT_ASC: return { ...state, allBreeds: action.payload };
     case SORT_WEIGHT_DESC: return { ...state, allBreeds: action.payload };
+    case 'all': return { ...state, breedsSearch: state.allBreeds };
+    case 'created': return { ...state, breedsSearch: state.allBreeds.filter(breed => breed.id.length > 3).sort() };
+    case 'notcreated': return { ...state, breedsSearch: state.allBreeds.filter(breed => breed.id < 300).sort() };
     default: return state;
   }
 };
