@@ -11,7 +11,7 @@ import Style from './Home.module.css';
 export default function Home() {
   const dispatch = useDispatch();
   const breeds = useSelector((state) => state.allBreeds);
-  const filteredBreeds = useSelector((state) => state.breedsSearch);
+  const filteredBreeds = useSelector((state) => state.breedsFiltered);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8);
