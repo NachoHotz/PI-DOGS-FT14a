@@ -18,8 +18,8 @@ module.exports = {
       const createdBreed = await Dog.create({
         id: uuidv4(),
         name,
-        height,
-        weight,
+        height: { metric: height },
+        weight: { metric: weight },
         life_span,
         image: { url: image },
       });

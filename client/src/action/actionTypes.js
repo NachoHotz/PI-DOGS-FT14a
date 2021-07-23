@@ -8,7 +8,6 @@ import axios from 'axios';
 import {
   GET_ALL_BREEDS,
   GET_BREED_DETAIL,
-  GET_BREEDS_CREATOR,
   GET_TEMPERAMENTS,
   CREATE_BREED,
   SORT_NAME_ASC,
@@ -52,7 +51,6 @@ export function getBreedsByTemp(filtered) {
 export function getBreedsCreator(creator) {
   return function (dispatch) {
     if (creator === 'all') {
-      console.log('entre');
       return dispatch({ type: 'all' });
     }
     if (creator === 'created') {
@@ -125,16 +123,8 @@ export function Sort(method) {
     if (method === 'Light') {
       let breeds = await axios.get(`${SERVER}/dogs`);
       breeds = breeds.data;
-      const breedsSorted = breeds.sort((a, b) => {
-        if (!a.weight.metric) {
-          const metric = a.weight;
-          a.weight = metric;
-        }
 
-        if (!b.weight.metric) {
-          const metric = { metric: b.weight };
-          b.weight = metric;
-        }
+      const breedsSorted = breeds.sort((a, b) => {
         if (parseInt(a.weight.metric) > parseInt(b.weight.metric)) return 1;
         if (parseInt(a.weight.metric) < parseInt(b.weight.metric)) return -1;
         return 0;
@@ -145,13 +135,10 @@ export function Sort(method) {
     if (method === 'Heavy') {
       let breeds = await axios.get(`${SERVER}/dogs`);
       breeds = breeds.data;
+
       const breedsSorted = breeds.sort((a, b) => {
-        if (b.id.length > 3) {
-          const metric = { metric: b.weight };
-          b.weight = metric;
-        }
-        if (parseInt(b.weight.metric) < parseInt(a.weight.metric)) return 1;
-        if (parseInt(b.weight.metric) > parseInt(a.weight.metric)) return -1;
+        if (parseInt(a.weight.metric) < parseInt(b.weight.metric)) return 1;
+        if (parseInt(a.weight.metric) > parseInt(b.weight.metric)) return -1;
         return 0;
       });
       return dispatch({ type: SORT_WEIGHT_DESC, payload: breedsSorted });

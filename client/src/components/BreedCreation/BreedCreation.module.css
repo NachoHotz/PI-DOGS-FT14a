@@ -1,6 +1,12 @@
-body {
-  background-color: white;
-}
+/*.body {*/
+  /*width: 100%;*/
+  /*height: 100%;*/
+  /*background-image: url('../Landing/pexels-chevanon-photography-1108099.jpg');*/
+/*}*/
+
+/*.body img {*/
+  /*height: 100%;*/
+/*}*/
 
 .form {
   display: flex;

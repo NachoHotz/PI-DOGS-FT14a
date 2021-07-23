@@ -57,7 +57,7 @@ export default function Filter() {
       <section className={Style.filters}>
         <form onSubmit={handleSubmit}>
           <p className={Style.temperament}>Filter by temperament:</p>
-          <select value={selectedTemp} className={Style.tempselect} onChange={handleTempChange} name="temperaments">
+          <select className={Style.tempselect} onChange={handleTempChange} name="temperaments">
             {
             temperaments?.map((temp) => (
               <option value={temp.name}>{temp.name}</option>

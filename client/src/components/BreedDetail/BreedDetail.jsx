@@ -28,14 +28,14 @@ export default function BreedDetail({ id }) {
         <Link to="/home" className={Style.link}>Home</Link>
       </section>
       <section className={Style.container}>
-        <img className={Style.image} src={detail[0].image.url} alt="" />
+        <img className={Style.image} src={detail[0].image.url} alt="Not found" />
         <section>
           <h3>
             {detail[0].name}
           </h3>
         </section>
-        { detail[0].height.metric ? <h4>Height (metrics): {detail[0].height.metric}</h4> : <h4>Height (metrics): {detail[0].height}</h4> }
-        { detail[0].weight.metric ? <h4>Weight (metrics): {detail[0].weight.metric}</h4> : <h4>Weight (metrics): {detail[0].weight}</h4> }
+        <h4>Height (cm): {detail[0].height.metric}</h4>
+        <h4>Weight (kg): {detail[0].weight.metric}</h4>
         <h4>
           Life span: {detail[0].life_span}
         </h4>

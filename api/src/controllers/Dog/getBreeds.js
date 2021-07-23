@@ -12,26 +12,7 @@ const { API_KEY } = process.env;
 module.exports = {
   getBreeds: async (req, res, next) => {
     try {
-      const { name, creator } = req.query;
-
-      if (creator === 'all') {
-        const dogsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
-        const dogsDb = getBreedsDb();
-
-        Promise.all([dogsApi, dogsDb])
-          .then((response) => {
-            const [dogsApiResponse, dogsDbResponse] = response;
-            return res.json(dogsDbResponse.concat(dogsApiResponse.data));
-          });
-      } else if (creator === 'created') {
-        const dogsDb = getBreedsDb();
-        Promise.all([dogsDb])
-          .then((response) => {
-            const [dogsDbResponse] = response;
-            return res.json(dogsDbResponse);
-          })
-          .catch((e) => next(e));
-      }
+      const { name } = req.query;
 
       if (!name) {
         const dogsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
@@ -64,7 +45,10 @@ module.exports = {
                 finalResults.push(result[i]);
               }
             }
-            res.json(finalResults);
+            if (finalResults === []) {
+              res.status(404).send('No dogs found, please try again.');
+            }
+            res.status(200).json(finalResults);
           });
       }
     } catch (e) {

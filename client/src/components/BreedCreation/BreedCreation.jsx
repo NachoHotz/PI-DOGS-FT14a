@@ -90,70 +90,70 @@ export default function Create() {
     }
   };
   return (
-    <section>
-      <Link to="/home/" className={Style.link}>Back Home</Link>
-      <form onSubmit={handleSubmit} className={Style.form}>
-        <section>
-          <label>Name: </label>
-          <input
-            name="name"
-            type="text"
-            placeholder="name"
-            onChange={handleInputChange}
-            value={breed.name}
-            required
-          />
-          <p className={Style.error}>{errors.name}</p>
-        </section>
-        <section>
-          <label>Height: </label>
-          <input
-            name="height"
-            type="text"
-            placeholder="height (min-max)"
-            onChange={handleInputChange}
-            value={breed.height}
-            required
-          />
-          <p className={Style.error}>{errors.height}</p>
-        </section>
-        <section>
-          <label>Weight: </label>
-          <input
-            name="weight"
-            type="text"
-            placeholder="weight (min-max)"
-            onChange={handleInputChange}
-            value={breed.weight}
-            required
-          />
-          <p className={Style.error}>{errors.weight}</p>
-        </section>
-        <section>
-          <label>Lifespan: </label>
-          <input
-            name="life_span"
-            type="text"
-            placeholder="lifespan"
-            onChange={handleInputChange}
-            value={breed.life_span}
-            required
-          />
-          <p className={Style.error}>{errors.life_span}</p>
-        </section>
-        <section>
-          <label>Image: </label>
-          <input
-            name="image"
-            type="text"
-            placeholder="link/url"
-            onChange={handleInputChange}
-            value={breed.image}
-          />
-        </section>
-        <span className={Style.select}>Select Temperaments (your new dog can have more than one or none):</span>
-        <select key={temperaments.id} className={Style.selectCheck} onChange={(e) => handleTempChange(e)}>
-          {
+    <main className={Style.body}>
+      <section>
+        <Link to="/home/" className={Style.link}>Back Home</Link>
+        <form onSubmit={handleSubmit} className={Style.form}>
+          <section>
+            <label>Name: </label>
+            <input
+              name="name"
+              type="text"
+              onChange={handleInputChange}
+              value={breed.name}
+              required
+            />
+            <p className={Style.error}>{errors.name}</p>
+          </section>
+          <section>
+            <label>Height: </label>
+            <input
+              name="height"
+              type="text"
+              placeholder="Height (min-max in cm)"
+              onChange={handleInputChange}
+              value={breed.height}
+              required
+            />
+            <p className={Style.error}>{errors.height}</p>
+          </section>
+          <section>
+            <label>Weight: </label>
+            <input
+              name="weight"
+              type="text"
+              placeholder="Weight (min-max in kg)"
+              onChange={handleInputChange}
+              value={breed.weight}
+              required
+            />
+            <p className={Style.error}>{errors.weight}</p>
+          </section>
+          <section>
+            <label>Lifespan: </label>
+            <input
+              name="life_span"
+              type="text"
+              placeholder="Lifespan + 'years'"
+              onChange={handleInputChange}
+              value={breed.life_span}
+              required
+            />
+            <p className={Style.error}>{errors.life_span}</p>
+          </section>
+          <section>
+            <label>Image: </label>
+            <input
+              name="image"
+              type="text"
+              placeholder="link/url"
+              onChange={handleInputChange}
+              value={breed.image}
+            />
+          </section>
+          <span className={Style.select}>Select Temperaments (your new dog can have more than one or none):</span>
+          <select key={temperaments.id} className={Style.selectCheck} onChange={handleTempChange}>
+            {
           temperaments?.map((temp) => (
             <option
               name="temperaments"
@@ -164,16 +164,17 @@ export default function Create() {
             </option>
           ))
         }
-        </select>
-        <div>
-          {
+          </select>
+          <div>
+            {
               breed.temperament.map((temp) => (
                 <h5>{temp}</h5>
               ))
             }
-        </div>
-        <button type="submit" className={Style.createbtn}>Create</button>
-      </form>
-    </section>
+          </div>
+          <button type="submit" className={Style.createbtn}>Create</button>
+        </form>
+      </section>
+    </main>
   );
 }
