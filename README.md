@@ -16,10 +16,6 @@
 - Aprender y practicar el workflow de GIT.
 - Usar y practicar testing.
 
-## Horarios y Fechas
-
-El proyecto tendrá una duración máxima de tres semanas. En el caso de que completan todas las tareas antes de dicho lapso podrán avisar a su Instructor para coordinar una fecha de presentación del trabajo (DEMO).
-
 ## Comenzando
 
  1. Se debe iniciar git con `git init`
@@ -28,8 +24,6 @@ El proyecto tendrá una duración máxima de tres semanas. En el caso de que com
  4. Seguir las instrucciones de GitHub para 'conectar' su repositorio local con GitHub `git remote add........`
  5. Hacer push de ese commit `git push -u origin main`
  6. No olvidar que deben regularmente hacer commit y push para mantener el repo actualizado en la nube
-
-Tendrán un `boilerplate` con la estructura general tanto del servidor como de cliente.
 
 __IMPORTANTE:__ Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
 
