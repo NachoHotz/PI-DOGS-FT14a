@@ -12,6 +12,10 @@ export default function BreedDetail() {
 
   const detail = breeds.filter((breed) => breed.id === id || breed.id === Number(id));
 
+  useEffect(() => {
+    dispatch(getBreeds());
+  }, []);
+
   if (detail[0].id.length > 3) {
     detail[0].temperament = '';
 
@@ -19,10 +23,6 @@ export default function BreedDetail() {
       detail[0].temperament += detail[0].temperaments[i].name.toString() + ', ';
     }
   }
-
-  useEffect(() => {
-    dispatch(getBreeds());
-  }, []);
 
   return (
     <main>

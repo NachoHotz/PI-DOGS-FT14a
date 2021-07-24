@@ -21,9 +21,9 @@ export default function Filter() {
     dispatch(getBreeds());
   }, []);
 
-  function handleTempChange(e) {
+  const handleTempChange = (e) => {
     setSelectedTemp(e.target.value);
-  }
+  };
 
   if (selectedTemp) {
     const filtered = [];
@@ -39,18 +39,18 @@ export default function Filter() {
     setSelectedTemp('');
   }
 
-  function handleCreatorChange(e) {
+  const handleCreatorChange = (e) => {
     setSelectedCreator(e.target.value);
-  }
+  };
 
   if (selectedCreator) {
     dispatch(getBreedsCreator(selectedCreator));
     setSelectedCreator('');
   }
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-  }
+  };
 
   return (
     <main>

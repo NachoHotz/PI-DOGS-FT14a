@@ -36,6 +36,7 @@ const rootReducer = (state = initialState, action) => {
     case 'all': return { ...state, breedsFiltered: state.allBreeds };
     case 'created': return { ...state, breedsFiltered: state.allBreeds.filter(breed => breed.id.length > 3).sort() };
     case 'notcreated': return { ...state, breedsFiltered: state.allBreeds.filter(breed => breed.id < 300).sort() };
+    //case 'life': return { ...state, breedsFiltered: action.payload };
     default: return state;
   }
 };

@@ -7,9 +7,9 @@ export default function Order() {
   const [sortMethod, setSortMethod] = useState('');
   const dispatch = useDispatch();
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     setSortMethod(e.target.value);
-  }
+  };
 
   if (sortMethod) {
     dispatch(Sort(sortMethod));

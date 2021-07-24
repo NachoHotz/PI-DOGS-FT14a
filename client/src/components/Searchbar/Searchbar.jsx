@@ -22,6 +22,7 @@ export default function Searchbar() {
   return (
     <section className={Style.search}>
       <input
+        value={name}
         type="search"
         placeholder="Name"
         onChange={(e) => handleInputChange(e)}
