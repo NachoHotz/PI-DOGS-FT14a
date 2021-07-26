@@ -20,31 +20,6 @@ import {
 
 const SERVER = 'http://localhost:3001';
 
-//export function getLife() {
-  //return async function (dispatch) {
-    //try {
-      //let breeds = await axios.get(`${SERVER}/dogs`);
-      //breeds = breeds.data;
-
-      //for (let i = 0; i < breeds.length; i++) {
-        //breeds[i].life_span = breeds[i].life_span.split(' ');
-
-        //for (let j = 0; j < breeds.length; j++) {
-          //breeds[i].life_span[0] = parseInt(breeds[i].life_span[0]);
-        //}
-      //}
-      //const filtered = [];
-
-      //for (let i = 0; i < breeds.length; i++) {
-        //if (breeds[i].life_span[0] > 12) filtered.push(breeds[i]);
-      //}
-      //return dispatch({ type: 'life', payload: filtered });
-    //} catch (e) {
-      //console.log(e);
-    //}
-  //};
-//}
-
 export function getBreeds() {
   return async function (dispatch) {
     try {

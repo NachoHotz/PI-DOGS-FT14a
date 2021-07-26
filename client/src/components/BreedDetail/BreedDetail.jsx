@@ -27,7 +27,7 @@ export default function BreedDetail() {
   return (
     <main>
       <section>
-        <Link to="/home" className={Style.link}>Home</Link>
+        <Link to="/home" className={Style.link}>Back Home</Link>
       </section>
       <section className={Style.container}>
         <img className={Style.image} src={detail[0].image.url} alt="Not found" />

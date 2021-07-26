@@ -1,7 +1,6 @@
 .body {
   display: flex;
   flex-direction: row;
-  flex-flow: row wrap;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
@@ -47,15 +46,15 @@
 .container {
     text-decoration: none;
     font-family: Shadows Into Light Two;
-    width: 260px;
+    width: 270px;
     height:  300px;
-    border-radius: 20px;
-    border-color: rgb(92, 87, 87);
+    border-radius: 10px;
+    border-color: black;
     margin-top: 50px;
     margin: 10px;
     box-shadow: 0 2px 2px 2px rgb(158, 155, 155);
     padding: 0px;
-    background-color: rgba(216, 218, 138, 0.822);
+    background-color: white;
     transition: all 0.25s; 
     text-align:center;
     color: black;
@@ -69,10 +68,10 @@
 
 .image {
   text-decoration: none;
-  border-radius: 30px; 
+  border-radius: 10px; 
   width: 150px; 
   height:150px;
-  margin-top: 10px; 
+  margin-top: 15px; 
 }
 
 .loading {

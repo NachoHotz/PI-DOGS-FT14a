@@ -33,26 +33,6 @@ export default function Home() {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
-  breeds?.map((breed) => {
-    if (breed.id.length > 3) {
-      breed.temperament = '';
-
-      for (let i = 0; i < breed.temperaments.length; i++) {
-        breed.temperament += breed.temperaments[i].name.toString() + ', ';
-      }
-    }
-  });
-
-  filteredBreeds?.map((breed) => {
-    if (breed.id.length > 3) {
-      breed.temperament = '';
-
-      for (let i = 0; i < breed.temperaments.length; i++) {
-        breed.temperament += breed.temperaments[i].name.toString() + ', ';
-      }
-    }
-  });
-
   const currentItems = breeds.slice(indexOfFirstItem, indexOfLastItem);
   const filteredCurrentItems = filteredBreeds.slice(indexOfFirstItem, indexOfLastItem);
 
@@ -72,9 +52,20 @@ export default function Home() {
     return null;
   });
 
-  const renderBreeds = (current) => (
-    <div className={Style.body}>
-      {
+  const renderBreeds = (current) => {
+    current?.map((breed) => {
+      if (breed.id.length > 3) {
+        breed.temperament = '';
+
+        for (let i = 0; i < breed.temperaments.length; i++) {
+          breed.temperament += breed.temperaments[i].name.toString() + ', ';
+        }
+      }
+    });
+
+    return (
+      <div className={Style.body}>
+        {
         current ? (
           current.map((breed) => (
             <div className={Style.container}>
@@ -89,8 +80,9 @@ export default function Home() {
           <h1 className={Style.loading}>Loading...</h1>
         )
       }
-    </div>
-  );
+      </div>
+    );
+  };
 
   useEffect(() => {
     dispatch(getBreeds());
