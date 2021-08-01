@@ -7,7 +7,6 @@
 import axios from 'axios';
 import {
   GET_ALL_BREEDS,
-  GET_BREED_DETAIL,
   GET_TEMPERAMENTS,
   CREATE_BREED,
   SORT_NAME_ASC,
@@ -61,17 +60,6 @@ export function getTemperaments() {
       return dispatch({ type: GET_TEMPERAMENTS, payload: temperaments.data });
     } catch (e) {
       console.log(e);
-    }
-  };
-}
-
-export function getBreedDetailId(id) {
-  return async function (dispatch) {
-    try {
-      const breed = await axios.get(`${SERVER}/dogs/${id}`);
-      return dispatch({ type: GET_BREED_DETAIL, payload: breed });
-    } catch (e) {
-      console.loge(e);
     }
   };
 }
