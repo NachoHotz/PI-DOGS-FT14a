@@ -57,7 +57,7 @@ export default function Home() {
       if (breed.id.length > 3) {
         breed.temperament = '';
 
-        for (let i = 0; i < breed.temperaments.length; i++) {
+        for (let i = 0; i < breed?.temperaments?.length; i++) {
           breed.temperament += breed.temperaments[i].name.toString() + ', ';
         }
       }
