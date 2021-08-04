@@ -17,12 +17,15 @@ import {
   SORT_WEIGHT_DESC,
 } from './names';
 
-const SERVER = 'http://localhost:3001';
+import {
+  BREEDS_ENDPOINT,
+  TEMPERAMENTS_ENDPOINT,
+} from '../constants';
 
 export function getBreeds() {
   return async function (dispatch) {
     try {
-      const breeds = await axios.get(`${SERVER}/dogs`);
+      const breeds = await axios.get(`${BREEDS_ENDPOINT}`);
       return dispatch({ type: GET_ALL_BREEDS, payload: breeds.data });
     } catch (e) {
       console.log(e);
@@ -33,7 +36,7 @@ export function getBreeds() {
 export function getBreedsByName(name) {
   return async function (dispatch) {
     try {
-      const breeds = await axios.get(`${SERVER}/dogs?name=${name}`);
+      const breeds = await axios.get(`${BREEDS_ENDPOINT}?name=${name}`);
       return dispatch({ type: GET_BREEDS_NAME, payload: breeds.data });
     } catch (e) {
       console.log(e);
@@ -41,9 +44,11 @@ export function getBreedsByName(name) {
   };
 }
 
-export function getBreedsByTemp(filtered) {
-  return function (dispatch) {
-    return dispatch({ type: GET_BREEDS_TEMP, payload: filtered });
+export function getBreedsByTemp(temp) {
+  return async function (dispatch) {
+    let breeds = await axios.get(`${BREEDS_ENDPOINT}`);
+    breeds = breeds.data;
+    const filtered = [];
   };
 }
 
@@ -56,7 +61,7 @@ export function getBreedsCreator(creator) {
 export function getTemperaments() {
   return async function (dispatch) {
     try {
-      const temperaments = await axios.get(`${SERVER}/temperaments`);
+      const temperaments = await axios.get(`${TEMPERAMENTS_ENDPOINT}`);
       return dispatch({ type: GET_TEMPERAMENTS, payload: temperaments.data });
     } catch (e) {
       console.log(e);
@@ -67,7 +72,7 @@ export function getTemperaments() {
 export function createBreed(breedForm) {
   return async function (dispatch) {
     try {
-      const createdBreed = await axios.post(`${SERVER}/dogs`, {
+      const createdBreed = await axios.post(`${BREEDS_ENDPOINT}`, {
         name: breedForm.name,
         height: breedForm.height,
         weight: breedForm.weight,
@@ -85,7 +90,7 @@ export function createBreed(breedForm) {
 export function Sort(method) {
   return async function (dispatch) {
     if (method === 'A-Z') {
-      let breeds = await axios.get(`${SERVER}/dogs`);
+      let breeds = await axios.get(`${BREEDS_ENDPOINT}`);
       breeds = breeds.data;
       const breedsSorted = breeds.sort((a, b) => {
         if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
@@ -95,7 +100,7 @@ export function Sort(method) {
       return dispatch({ type: SORT_NAME_ASC, payload: breedsSorted });
     }
     if (method === 'Z-A') {
-      let breeds = await axios.get(`${SERVER}/dogs`);
+      let breeds = await axios.get(`${BREEDS_ENDPOINT}`);
       breeds = breeds.data;
       const breedsSorted = breeds.sort((a, b) => {
         if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
@@ -105,7 +110,7 @@ export function Sort(method) {
       return dispatch({ type: SORT_NAME_DESC, payload: breedsSorted });
     }
     if (method === 'Light') {
-      let breeds = await axios.get(`${SERVER}/dogs`);
+      let breeds = await axios.get(`${BREEDS_ENDPOINT}`);
       breeds = breeds.data;
 
       const breedsSorted = breeds.sort((a, b) => {
@@ -117,7 +122,7 @@ export function Sort(method) {
     }
 
     if (method === 'Heavy') {
-      let breeds = await axios.get(`${SERVER}/dogs`);
+      let breeds = await axios.get(`${BREEDS_ENDPOINT}`);
       breeds = breeds.data;
 
       const breedsSorted = breeds.sort((a, b) => {
