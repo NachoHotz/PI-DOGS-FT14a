@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getBreeds,
   getTemperaments,
   getBreedsCreator,
   getBreedsByTemp,
@@ -11,14 +10,12 @@ import Style from './Filter.module.css';
 export default function Filter() {
   const dispatch = useDispatch();
   const temperaments = useSelector((state) => state.temperaments);
-  const breeds = useSelector((state) => state.allBreeds);
 
   const [selectedTemp, setSelectedTemp] = useState('');
   const [selectedCreator, setSelectedCreator] = useState('');
 
   useEffect(() => {
     dispatch(getTemperaments());
-    dispatch(getBreeds());
   }, []);
 
   const handleTempChange = (e) => {
@@ -26,16 +23,7 @@ export default function Filter() {
   };
 
   if (selectedTemp) {
-    const filtered = [];
-    breeds?.forEach((b) => {
-      if (b.id.length > 3) {
-        b.temperaments.map((t) => (t.name === selectedTemp ? filtered.push(b) : null));
-      }
-      if (b.temperament?.includes(selectedTemp)) {
-        filtered.push(b);
-      }
-    });
-    dispatch(getBreedsByTemp(filtered));
+    dispatch(getBreedsByTemp(selectedTemp));
     setSelectedTemp('');
   }
 
