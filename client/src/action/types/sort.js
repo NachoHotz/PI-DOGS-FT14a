@@ -1,6 +1,7 @@
 /* eslint-disable func-names */
 /* eslint-disable no-console */
 /* eslint-disable radix */
+/* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 
 import {
@@ -12,7 +13,7 @@ import {
 
 import { BREEDS_ENDPOINT } from '../../constants';
 
-export default function Sort(method) {
+export function Sort(method) {
   return async function (dispatch) {
     if (method === 'A-Z') {
       let breeds = await axios.get(`${BREEDS_ENDPOINT}`);
