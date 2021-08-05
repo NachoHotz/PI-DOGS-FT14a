@@ -3,7 +3,7 @@
 /* eslint-disable no-await-in-loop */
 const axios = require('axios').default;
 const { Temperament } = require('../../index');
-const { API_URL } = require('../../../constants');
+const { API_URL } = require('../../../endpoints');
 
 const { API_KEY } = process.env;
 
