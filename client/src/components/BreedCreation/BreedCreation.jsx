@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { createBreed, getTemperaments } from '../../action/actionTypes';
+import { createBreed } from '../../action/types/dogsActions';
+import { getTemperaments } from '../../action/types/temperamentActions';
 import Style from './BreedCreation.module.css';
 
 function validateFormData(input) {
