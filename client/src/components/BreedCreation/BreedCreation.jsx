@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { createBreed } from '../../action/types/dogsActions';
+import { createBreed } from '../../action/types/dogActions/createBreed';
 import { getTemperaments } from '../../action/types/temperamentActions';
 import Style from './BreedCreation.module.css';
 
