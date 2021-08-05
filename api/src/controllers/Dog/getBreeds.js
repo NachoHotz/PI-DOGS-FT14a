@@ -3,14 +3,14 @@
 /* eslint-disable no-plusplus */
 const axios = require('axios').default;
 const { Op } = require('sequelize');
-const { API_URL } = require('../../constants');
+const { API_URL } = require('../../endpoints');
 const { getBreedsDb } = require('../../db/controllers/dog/getBreedsDb');
 const { Dog, Temperament } = require('../../db/index');
 
 const { API_KEY } = process.env;
 
 module.exports = {
-  getBreeds: async (req, res, next) => {
+  getBreeds: async (req, res) => {
     try {
       const { name } = req.query;
 
