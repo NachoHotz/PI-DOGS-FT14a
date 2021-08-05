@@ -1,4 +1,5 @@
 /* eslint-disable consistent-return */
+/* eslint-disable no-console */
 const { Dog, Temperament } = require('../../index');
 
 module.exports = {
