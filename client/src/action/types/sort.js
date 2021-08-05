@@ -11,7 +11,7 @@ import {
   SORT_WEIGHT_DESC,
 } from '../names';
 
-import { BREEDS_ENDPOINT } from '../../constants';
+import { BREEDS_ENDPOINT } from '../../utils/endpoints';
 
 export function Sort(method) {
   return async function (dispatch) {
