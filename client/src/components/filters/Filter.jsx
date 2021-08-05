@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getBreedsCreator,
-  getBreedsByTemp,
-} from '../../action/types/dogsActions';
+import { getBreedsCreator } from '../../action/types/dogActions/getBreedsCreator';
+import { getBreedsByTemp } from '../../action/types/dogActions/getBreedsByTemp';
 import { getTemperaments } from '../../action/types/temperamentActions';
 import Style from './Filter.module.css';
 
