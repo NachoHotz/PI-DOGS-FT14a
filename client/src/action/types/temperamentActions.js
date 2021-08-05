@@ -3,7 +3,7 @@
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 import { GET_TEMPERAMENTS } from '../names';
-import { TEMPERAMENTS_ENDPOINT } from '../../constants';
+import { TEMPERAMENTS_ENDPOINT } from '../../utils/endpoints';
 
 export function getTemperaments() {
   return async function (dispatch) {
