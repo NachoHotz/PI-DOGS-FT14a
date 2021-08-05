@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
-import { BREEDS_ENDPOINT } from '../../../constants';
+import { BREEDS_ENDPOINT } from '../../../utils/endpoints';
 import { GET_BREEDS_TEMP } from '../../names';
 
 export function getBreedsByTemp(temp) {

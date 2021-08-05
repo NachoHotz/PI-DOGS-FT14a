@@ -3,7 +3,7 @@
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 import { CREATE_BREED } from '../../names';
-import { BREEDS_ENDPOINT } from '../../../constants';
+import { BREEDS_ENDPOINT } from '../../../utils/endpoints';
 
 export function createBreed(breedForm) {
   return async function (dispatch) {

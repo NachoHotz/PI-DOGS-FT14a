@@ -3,7 +3,7 @@
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 import { GET_ALL_BREEDS } from '../../names';
-import { BREEDS_ENDPOINT } from '../../../constants';
+import { BREEDS_ENDPOINT } from '../../../utils/endpoints';
 
 export function getBreeds() {
   return async function (dispatch) {
