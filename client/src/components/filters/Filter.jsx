@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getTemperaments,
   getBreedsCreator,
   getBreedsByTemp,
-} from '../../action/actionTypes';
+} from '../../action/types/dogsActions';
+import { getTemperaments } from '../../action/types/temperamentActions';
 import Style from './Filter.module.css';
 
 export default function Filter() {
