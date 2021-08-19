@@ -3,62 +3,49 @@
 /* eslint-disable radix */
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
-
-import {
-  SORT_NAME_ASC,
-  SORT_NAME_DESC,
-  SORT_WEIGHT_ASC,
-  SORT_WEIGHT_DESC,
-} from '../names';
-
-import { BREEDS_ENDPOINT } from '../../utils/endpoints';
+import * as actionTypes from '../names';
+import * as endpoints from '../../../utils/endpoints';
 
 export function Sort(method) {
   return async function (dispatch) {
     if (method === 'A-Z') {
-      let breeds = await axios.get(`${BREEDS_ENDPOINT}`);
-      breeds = breeds.data;
-      const breedsSorted = breeds.sort((a, b) => {
+      const { data } = await axios.get(`${endpoints.BREEDS_ENDPOINT}`);
+      const breedsSorted = data.sort((a, b) => {
         if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
         if (a.name > b.name) return 1;
         return 0;
       });
-      return dispatch({ type: SORT_NAME_ASC, payload: breedsSorted });
+      return dispatch({ type: actionTypes.SORT_NAME_ASC, payload: breedsSorted });
     }
 
     if (method === 'Z-A') {
-      let breeds = await axios.get(`${BREEDS_ENDPOINT}`);
-      breeds = breeds.data;
-      const breedsSorted = breeds.sort((a, b) => {
+      const { data } = await axios.get(`${endpoints.BREEDS_ENDPOINT}`);
+      const breedsSorted = data.sort((a, b) => {
         if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
         if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
         return 0;
       });
-      return dispatch({ type: SORT_NAME_DESC, payload: breedsSorted });
+      return dispatch({ type: actionTypes.SORT_NAME_DESC, payload: breedsSorted });
     }
 
     if (method === 'Light') {
-      let breeds = await axios.get(`${BREEDS_ENDPOINT}`);
-      breeds = breeds.data;
-
-      const breedsSorted = breeds.sort((a, b) => {
+      const { data } = await axios.get(`${endpoints.BREEDS_ENDPOINT}`);
+      const breedsSorted = data.sort((a, b) => {
         if (parseInt(a.weight.metric) > parseInt(b.weight.metric)) return 1;
         if (parseInt(a.weight.metric) < parseInt(b.weight.metric)) return -1;
         return 0;
       });
-      return dispatch({ type: SORT_WEIGHT_ASC, payload: breedsSorted });
+      return dispatch({ type: actionTypes.SORT_WEIGHT_ASC, payload: breedsSorted });
     }
 
     if (method === 'Heavy') {
-      let breeds = await axios.get(`${BREEDS_ENDPOINT}`);
-      breeds = breeds.data;
-
-      const breedsSorted = breeds.sort((a, b) => {
+      const { data } = await axios.get(`${endpoints.BREEDS_ENDPOINT}`);
+      const breedsSorted = data.sort((a, b) => {
         if (parseInt(a.weight.metric) < parseInt(b.weight.metric)) return 1;
         if (parseInt(a.weight.metric) > parseInt(b.weight.metric)) return -1;
         return 0;
       });
-      return dispatch({ type: SORT_WEIGHT_DESC, payload: breedsSorted });
+      return dispatch({ type: actionTypes.SORT_WEIGHT_DESC, payload: breedsSorted });
     }
   };
 }

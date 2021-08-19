@@ -2,14 +2,14 @@
 /* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
-import { GET_TEMPERAMENTS } from '../names';
-import { TEMPERAMENTS_ENDPOINT } from '../../utils/endpoints';
+import * as actionTypes from '../names';
+import * as endpoints from '../../../utils/endpoints';
 
 export function getTemperaments() {
   return async function (dispatch) {
     try {
-      const temperaments = await axios.get(`${TEMPERAMENTS_ENDPOINT}`);
-      return dispatch({ type: GET_TEMPERAMENTS, payload: temperaments.data });
+      const { data } = await axios.get(`${endpoints.TEMPERAMENTS_ENDPOINT}`);
+      return dispatch({ type: actionTypes.GET_TEMPERAMENTS, payload: data });
     } catch (e) {
       console.log(e);
     }

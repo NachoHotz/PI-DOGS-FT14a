@@ -2,14 +2,14 @@
 /* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
-import { GET_BREEDS_NAME } from '../../names';
-import { BREEDS_ENDPOINT } from '../../../utils/endpoints';
+import * as actionTypes from '../../names';
+import * as endpoints from '../../../../utils/endpoints';
 
 export function getBreedsByName(name) {
   return async function (dispatch) {
     try {
-      const breeds = await axios.get(`${BREEDS_ENDPOINT}?name=${name}`);
-      return dispatch({ type: GET_BREEDS_NAME, payload: breeds.data });
+      const { data } = await axios.get(`${endpoints.BREEDS_ENDPOINT}?name=${name}`);
+      return dispatch({ type: actionTypes.GET_BREEDS_NAME, payload: data });
     } catch (e) {
       console.log(e);
     }
