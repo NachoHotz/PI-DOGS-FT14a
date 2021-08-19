@@ -8,7 +8,7 @@ import * as endpoints from '../../../../utils/endpoints';
 export function createBreed(breedForm) {
   return async function (dispatch) {
     try {
-      const { data }  = await axios.post(`${endpoints.BREEDS_ENDPOINT}`, {
+      const { data } = await axios.post(`${endpoints.BREEDS_ENDPOINT}`, {
         name: breedForm.name,
         height: breedForm.height,
         weight: breedForm.weight,
