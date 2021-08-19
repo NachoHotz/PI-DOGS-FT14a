@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Style from './Order.module.css';
-import { Sort } from '../../action/types/sort';
+import { Sort } from '../../redux/actions/types/sort';
 
 export default function Order() {
   const [sortMethod, setSortMethod] = useState('');

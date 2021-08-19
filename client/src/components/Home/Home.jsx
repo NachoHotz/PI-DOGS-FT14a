@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBreeds } from '../../action/types/dogActions/getBreeds';
+import { getBreeds } from '../../redux/actions/types/dogActions/getBreeds';
 import Nav from '../Nav/Nav';
 import Filter from '../Filters/Filter';
 import Order from '../Order/Order';
