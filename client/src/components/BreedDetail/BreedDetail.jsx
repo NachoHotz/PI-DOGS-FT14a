@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBreeds } from '../../action/types/dogActions/getBreeds';
+import { getBreeds } from '../../redux/actions/types/dogActions/getBreeds';
 import Style from './BreedDetail.module.css';
 
 export default function BreedDetail() {
