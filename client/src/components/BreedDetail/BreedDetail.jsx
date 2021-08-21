@@ -5,15 +5,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBreeds } from '../../redux/actions/types/dogActions/getBreeds';
 import Style from './BreedDetail.module.css';
 
+{ /*eslint-disable no-return-assign*/ }
+
 export default function BreedDetail() {
   const dispatch = useDispatch();
   const breeds = useSelector((state) => state.allBreeds);
   const { id } = useParams();
 
-  const detail = breeds.filter((breed) => breed.id === id || breed.id === Number(id));
+  let detail = breeds.filter((breed) => breed.id === id || breed.id === Number(id));
 
   useEffect(() => {
     dispatch(getBreeds());
+    return () => detail = {};
   }, []);
 
   if (detail[0].id.length > 3) {
