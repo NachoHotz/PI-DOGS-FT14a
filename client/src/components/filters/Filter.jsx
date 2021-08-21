@@ -40,24 +40,22 @@ export default function Filter() {
 
   return (
     <main>
-      <section className={Style.filters}>
-        <form onSubmit={handleSubmit}>
-          <p className={Style.temperament}>Filter by temperament:</p>
-          <select className={Style.tempselect} onChange={handleTempChange} name="temperaments">
-            {
+      <form onSubmit={handleSubmit}>
+        <p className={Style.temperament}>Filter by temperament:</p>
+        <select className={Style.tempselect} onChange={handleTempChange} name="temperaments">
+          {
             temperaments?.map((temp) => (
               <option value={temp.name}>{temp.name}</option>
             ))
           }
-          </select>
-          <p className={Style.creator}>Filter by creator:</p>
-          <select className={Style.creatorSelect} name="creator" onChange={(e) => handleCreatorChange(e)}>
-            <option value="all">All</option>
-            <option value="created">Created</option>
-            <option value="notcreated">Not created</option>
-          </select>
-        </form>
-      </section>
+        </select>
+        <p className={Style.creator}>Filter by creator:</p>
+        <select className={Style.creatorSelect} name="creator" onChange={(e) => handleCreatorChange(e)}>
+          <option value="all">All</option>
+          <option value="created">Created</option>
+          <option value="notcreated">Not created</option>
+        </select>
+      </form>
     </main>
   );
 }
