@@ -60,22 +60,28 @@ export default function Home() {
       }
     });
 
+    if (current.length === 0) {
+      return (
+        <h2 className={Style.noResults}>No dogs found.</h2>
+      );
+    }
+
     return (
       <div className={Style.body}>
         {
-        current ? (
-          current.map((breed) => (
-            <div className={Style.container}>
-              <Link to={`/home/${breed.id}`}>
-                <img className={Style.image} src={breed.image.url} alt="Not found" />
-              </Link>
-              <h4 className={Style.name}>{breed.name}</h4>
-              <h5 className={Style.temperament}>{breed.temperament}</h5>
-            </div>
-          ))
-        ) : (
-          <h1 className={Style.loading}>Loading...</h1>
-        )
+          current.length > 0 ? (
+            current.map((breed) => (
+              <div className={Style.container}>
+                <Link to={`/home/${breed.id}`}>
+                  <img className={Style.image} src={breed.image.url} alt="Not found" />
+                </Link>
+                <h4 className={Style.name}>{breed.name}</h4>
+                <h5 className={Style.temperament}>{breed.temperament}</h5>
+              </div>
+            ))
+          ) : (
+            <h1 className={Style.loading}>Loading...</h1>
+          )
       }
       </div>
     );
