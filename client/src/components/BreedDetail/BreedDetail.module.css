@@ -33,7 +33,8 @@
 .link:hover {
   background-color: black;
   color: white;
-  border-radius: 10px;
+  transition: 0.25s;
+  border-radius: 5px;
   padding: 10px;
 }
 
