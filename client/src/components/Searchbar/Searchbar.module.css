@@ -1,16 +1,25 @@
 .search_container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   margin-top: 20px;
 }
 
+.search_input {
+  height: 10%;
+  padding: 5px;
+  font-size: 100%;
+}
+
 .searchbtn {
+  background-color: white;
+  border: 0px solid black;
   margin-left: 5px;
+  border-radius: 5px;
+  padding: 7px;
+  font-size: 20px;
 }
 
 .searchbtn:hover {
   background-color: black;
   color: white;
+  transition: 0.25s;
+  cursor: pointer;
 }

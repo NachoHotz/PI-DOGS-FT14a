@@ -20,21 +20,24 @@ export default function Searchbar() {
   };
 
   return (
-    <section className={Style.search}>
-      <input
-        value={name}
-        type="search"
-        placeholder="Name"
-        onChange={(e) => handleInputChange(e)}
-      />
-      <button
-        type="submit"
-        value="Search"
-        className={Style.searchbtn}
-        onClick={(e) => handleSearchClick(e)}
-      >
-        Search
-      </button>
-    </section>
+    <form action="submit">
+      <section className={Style.search_container}>
+        <input
+          value={name}
+          type="search"
+          placeholder="Name"
+          className={Style.search_input}
+          onChange={(e) => handleInputChange(e)}
+        />
+        <button
+          type="submit"
+          value="Search"
+          className={Style.searchbtn}
+          onClick={(e) => handleSearchClick(e)}
+        >
+          Search
+        </button>
+      </section>
+    </form>
   );
 }
