@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBreeds } from '../../redux/actions/types/dogActions/getBreeds';
 import Nav from '../Nav/Nav';
-import Filter from '../Filters/Filter';
-import Order from '../Order/Order';
-import Searchbar from '../Searchbar/Searchbar';
 import Style from './Home.module.css';
 
 export default function Home() {
@@ -119,9 +116,6 @@ export default function Home() {
   return (
     <main>
       <Nav />
-      <Filter />
-      <Order />
-      <Searchbar />
       <ul className={Style.pageNumbers}>
         <li>
           <button
