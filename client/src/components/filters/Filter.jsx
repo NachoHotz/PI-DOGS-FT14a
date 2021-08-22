@@ -43,8 +43,8 @@ export default function Filter() {
         <p className={Style.temperament}>Filter by temperament:</p>
         <select className={Style.tempselect} onChange={handleTempChange} name="temperaments">
           {
-            temperaments?.map((temp) => (
-              <option value={temp.name}>{temp.name}</option>
+            temperaments?.map((temp, index) => (
+              <option key={temp.id} value={temp.name}>{temp.name}</option>
             ))
           }
         </select>
