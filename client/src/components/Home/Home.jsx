@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBreeds } from '../../redux/actions/types/dogActions/getBreeds';
+import { getBreeds } from '../../redux/actions/types/breedActions';
 import Nav from '../Nav/Nav';
 import Style from './Home.module.css';
 
 export default function Home() {
   const dispatch = useDispatch();
   const breeds = useSelector((state) => state.allBreeds);
-  console.log(breeds);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8);

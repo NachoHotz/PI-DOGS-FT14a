@@ -4,16 +4,16 @@ import Style from './Order.module.css';
 import { Sort } from '../../redux/actions/types/sort';
 
 export default function Order() {
-  const [sortMethod, setSortMethod] = useState('');
+  const [method, setMethod] = useState('');
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    setSortMethod(e.target.value);
+    setMethod(e.target.value);
   };
 
-  if (sortMethod) {
-    dispatch(Sort(sortMethod));
-    setSortMethod('');
+  if (method) {
+    dispatch(Sort(method));
+    setMethod('');
   }
 
   return (
