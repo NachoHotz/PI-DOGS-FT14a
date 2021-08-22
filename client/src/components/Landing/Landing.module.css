@@ -6,6 +6,7 @@
 }
 
 .link {
+  margin-top: 10px;
   position: absolute;
   border-radius: 10px;
   left: 45.20%;
@@ -19,4 +20,6 @@
 .link:hover {
   background-color: black;
   color: white;
+  cursor: pointer;
+  transition: 0.25s;
 }
