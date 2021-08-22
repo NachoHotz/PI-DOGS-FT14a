@@ -13,8 +13,8 @@ module.exports = {
       const temperamentInDb = await Temperament.findAll();
 
       if (temperamentInDb.length === 0) {
-        const temperaments = await axios.get(`${API_URL}?api_key=${API_KEY}`);
-        const temperamentsList = temperaments.data;
+        const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
+        const temperamentsList = data;
 
         for (let i = 0; i < temperamentsList.length; i++) {
           const temperamentsListSplitted = temperamentsList[i].temperament?.split(', ');
