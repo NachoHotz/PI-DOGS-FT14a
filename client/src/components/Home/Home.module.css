@@ -73,10 +73,6 @@
   margin-top: 15px; 
 }
 
-.loading {
-  display: flex;
-}
-
 .noResults {
   display: flex;
   align-items: center;

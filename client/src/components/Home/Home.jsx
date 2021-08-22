@@ -48,6 +48,12 @@ export default function Home() {
   });
 
   const renderBreeds = (current) => {
+    if (current.length === 0) {
+      return (
+        <h2 className={Style.noResults}>Loading...</h2>
+      );
+    }
+
     current?.map((breed) => {
       if (breed.id.length > 3) {
         breed.temperament = '';
@@ -58,16 +64,9 @@ export default function Home() {
       }
     });
 
-    if (current.length === 0) {
-      return (
-        <h2 className={Style.noResults}>No dogs found.</h2>
-      );
-    }
-
     return (
       <div className={Style.body}>
         {
-          current.length > 0 ? (
             current.map((breed) => (
               <div key={breed.id} className={Style.container}>
                 <Link to={`/home/${breed.id}`}>
@@ -77,9 +76,6 @@ export default function Home() {
                 <h5 className={Style.temperament}>{breed.temperament}</h5>
               </div>
             ))
-          ) : (
-            <h1 className={Style.loading}>Loading...</h1>
-          )
       }
       </div>
     );
