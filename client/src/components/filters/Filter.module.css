@@ -25,3 +25,7 @@
 .creatorSelect {
   margin-left: 40px;
 }
+
+.creatorSelect:hover {
+  cursor:pointer;
+}
