@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBreedsCreator } from '../../redux/actions/types/dogActions/getBreedsCreator';
-import { getBreedsByTemp } from '../../redux/actions/types/dogActions/getBreedsByTemp';
+import { getBreedsByTemp, getBreedsCreator } from '../../redux/actions/types/breedActions';
 import { getTemperaments } from '../../redux/actions/types/temperamentActions';
 import Style from './Filter.module.css';
 
