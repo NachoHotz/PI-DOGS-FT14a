@@ -8,7 +8,6 @@ import Style from './Home.module.css';
 export default function Home() {
   const dispatch = useDispatch();
   const breeds = useSelector((state) => state.allBreeds);
-  const filteredBreeds = useSelector((state) => state.breedsFiltered);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8);
@@ -31,7 +30,6 @@ export default function Home() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
   const currentItems = breeds.slice(indexOfFirstItem, indexOfLastItem);
-  const filteredCurrentItems = filteredBreeds.slice(indexOfFirstItem, indexOfLastItem);
 
   const renderPageNumbers = pages.map((number) => {
     if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
@@ -123,27 +121,25 @@ export default function Home() {
     <main>
       <Nav />
       <ul className={Style.pageNumbers}>
-        <li>
-          <button
-            onClick={handlePrevClick}
-            disabled={currentPage === pages[0]}
-          >
-            Prev
-          </button>
-        </li>
+        <button
+          onClick={handlePrevClick}
+          disabled={currentPage === pages[0]}
+          className={currentPage === pages[0] ? Style.disabled : 'active'}
+        >
+          Prev
+        </button>
         {pageDecrementBtn}
         {renderPageNumbers}
         {pageIncrementBtn}
-        <li key={currentPage}>
-          <button
-            onClick={handleNextClick}
-            disabled={currentPage === pages[pages.length - 1]}
-          >
-            Next
-          </button>
-        </li>
+        <button
+          onClick={handleNextClick}
+          disabled={currentPage === pages[pages.length - 1]}
+          className={currentPage === pages[pages.length - 1] ? Style.disabled : 'active'}
+        >
+          Next
+        </button>
       </ul>
-      { filteredBreeds?.length > 0 ? renderBreeds(filteredCurrentItems) : renderBreeds(currentItems) }
+      {renderBreeds(currentItems)}
     </main>
   );
 }
