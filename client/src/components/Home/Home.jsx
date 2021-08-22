@@ -8,6 +8,7 @@ import Style from './Home.module.css';
 export default function Home() {
   const dispatch = useDispatch();
   const breeds = useSelector((state) => state.allBreeds);
+  console.log(breeds);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8);
@@ -69,7 +70,7 @@ export default function Home() {
         {
           current.length > 0 ? (
             current.map((breed) => (
-              <div className={Style.container}>
+              <div key={breed.id} className={Style.container}>
                 <Link to={`/home/${breed.id}`}>
                   <img className={Style.image} src={breed.image.url} alt="Not found" />
                 </Link>
@@ -124,7 +125,7 @@ export default function Home() {
         <button
           onClick={handlePrevClick}
           disabled={currentPage === pages[0]}
-          className={currentPage === pages[0] ? Style.disabled : 'active'}
+          className={currentPage === pages[0] || breeds.length === 0 ? Style.disabled : 'active'}
         >
           Prev
         </button>
@@ -134,7 +135,7 @@ export default function Home() {
         <button
           onClick={handleNextClick}
           disabled={currentPage === pages[pages.length - 1]}
-          className={currentPage === pages[pages.length - 1] ? Style.disabled : 'active'}
+          className={currentPage === pages[pages.length - 1] || breeds.length === 0 ? Style.disabled : 'active'}
         >
           Next
         </button>
