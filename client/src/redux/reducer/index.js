@@ -2,6 +2,8 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable arrow-parens */
 /*eslint-disable radix*/
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable func-names */
 import * as actionTypes from '../actions/names';
 
 const initialState = {
@@ -16,20 +18,22 @@ const rootReducer = (state = initialState, action) => {
     case actionTypes.GET_TEMPERAMENTS: return { ...state, temperaments: action.payload };
     case actionTypes.CREATE_BREED: return { ...state, allBreeds: state.allBreeds.concat(action.payload) };
     case actionTypes.GET_BREEDS_TEMP: return { ...state, allBreeds: action.payload };
-    case actionTypes.SORT_NAME_ASC:
-      const sortedAsc = state.allBreeds.sort((a, b) => {
+    case actionTypes.SORT_NAME_ASC: return {
+      ...state,
+      allBreeds: state.allBreeds.sort((a, b) => {
         if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
         if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
         return 0;
-      });
-      return { ...state, allBreeds: sortedAsc };
-    case actionTypes.SORT_NAME_DESC:
-      const sorted = state.allBreeds.sort((a, b) => {
-        if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+      }),
+    };
+    case actionTypes.SORT_NAME_DESC: return {
+      ...state,
+      allBreeds: state.allBreeds.sort((a, b) => {
         if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+        if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
         return 0;
-      });
-      return { ...state, allBreeds: sorted };
+      }),
+    };
     case actionTypes.SORT_WEIGHT_ASC: return {
       ...state,
       allBreeds: state.allBreeds.sort((a, b) => {
