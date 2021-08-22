@@ -10,9 +10,9 @@ module.exports = {
     try {
       if (req.params.id.length < 4) {
         const breedId = Number(req.params.id);
-        const breedApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
+        const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
 
-        const detail = breedApi.data.find((breed) => breed.id === breedId);
+        const detail = data.find((breed) => breed.id === breedId);
 
         if (detail) {
           return res.json(detail);
