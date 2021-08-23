@@ -62,3 +62,13 @@ Then, execute `npm start` on both folders to initialize the database, and the cl
 ### Screenshots (work is still in progress in terms of CSS style)
 
 #### Landing Page
+![landing](https://user-images.githubusercontent.com/72778896/130497918-0bd147cf-2c6a-41f1-b2eb-e78f70cf7496.jpg)
+
+#### Home Page
+![home](https://user-images.githubusercontent.com/72778896/130497944-1b7de0af-1be8-4280-a4e6-e0aef7455aeb.jpg)
+
+#### Detail Page
+![detail](https://user-images.githubusercontent.com/72778896/130498004-b3cc7baa-1bb9-428b-b882-426eeb3676e3.jpg)
+
+#### Create page
+![create](https://user-images.githubusercontent.com/72778896/130498042-2c12f68f-41da-423b-b8c0-96eacbfe61b1.jpg)
