@@ -65,7 +65,7 @@ Then, execute `npm start` on both folders to initialize the database, and the cl
 ![landing](https://user-images.githubusercontent.com/72778896/130497918-0bd147cf-2c6a-41f1-b2eb-e78f70cf7496.jpg)
 
 #### Home Page
-![home](https://user-images.githubusercontent.com/72778896/130497944-1b7de0af-1be8-4280-a4e6-e0aef7455aeb.jpg)
+![home2](https://user-images.githubusercontent.com/72778896/130499340-b3e89b7d-b3a0-4b02-94b2-cb7fd97727bf.jpg)
 
 #### Detail Page
 ![detail](https://user-images.githubusercontent.com/72778896/130498004-b3cc7baa-1bb9-428b-b882-426eeb3676e3.jpg)
