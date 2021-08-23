@@ -34,19 +34,19 @@ Then, follow the steps below
 Clone the project
 
 ```bash
-  git clone https://github.com/NachoHotz/Dogspedia.git
+git clone https://github.com/NachoHotz/Dogspedia.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd Dogspedia
+cd Dogspedia
 ```
 
 Head to the api folder
 
 ```bash
-  cd api/
+cd api
 ```
 
 Install dependencies
@@ -58,7 +58,7 @@ npm install
 Do the same but with the client folder
 
 ```bash
-cd client/
+cd client
 npm install
 ```
 
