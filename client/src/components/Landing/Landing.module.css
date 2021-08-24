@@ -1,5 +1,5 @@
 .landingBody {
-  background-image: url('./pexels-photo-1851164.jpeg');
+  background-image: url("./pexels-photo-1851164.jpeg");
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +19,7 @@
   margin-top: 10px;
   position: absolute;
   border-radius: 10px;
-  left: 45.20%;
+  left: 45.2%;
   top: 40%;
   height: 10%;
   width: 10%;
