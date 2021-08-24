@@ -19,7 +19,9 @@ export function getBreeds() {
 export function getBreedsByName(name) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.get(`${endpoints.BREEDS_ENDPOINT}?name=${name}`);
+      const { data } = await axios.get(
+        `${endpoints.BREEDS_ENDPOINT}?name=${name}`,
+      );
       return dispatch({ type: actionTypes.GET_BREEDS_NAME, payload: data });
     } catch (e) {
       console.log(e);
