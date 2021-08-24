@@ -38,39 +38,39 @@
 }
 
 .pageNumbers li.active {
-  background-color: black; 
+  background-color: black;
   color: white;
 }
 
 .container {
-    text-decoration: none;
-    font-family: Shadows Into Light Two;
-    width: 270px;
-    height:  300px;
-    border-radius: 10px;
-    border-color: black;
-    margin-top: 50px;
-    margin: 10px;
-    box-shadow: 0 2px 2px 2px rgb(158, 155, 155);
-    padding: 0px;
-    background-color: white;
-    transition: all 0.25s; 
-    text-align:center;
-    color: black;
+  text-decoration: none;
+  font-family: Shadows Into Light Two;
+  width: 270px;
+  height: 300px;
+  border-radius: 10px;
+  border-color: black;
+  margin-top: 50px;
+  margin: 10px;
+  box-shadow: 0 2px 2px 2px rgb(158, 155, 155);
+  padding: 0px;
+  background-color: white;
+  transition: all 0.25s;
+  text-align: center;
+  color: black;
 }
 
 .container:hover {
--webkit-transform: scale(1.10);
-   transform: scale(1.10);
-   box-shadow: 0 5px 10px rgb(196, 192, 192);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  box-shadow: 0 5px 10px rgb(196, 192, 192);
 }
 
 .image {
   text-decoration: none;
-  border-radius: 10px; 
-  width: 150px; 
-  height:150px;
-  margin-top: 15px; 
+  border-radius: 10px;
+  width: 150px;
+  height: 150px;
+  margin-top: 15px;
 }
 
 .noResults {
