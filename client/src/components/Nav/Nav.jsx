@@ -12,7 +12,9 @@ export default function Nav() {
         <Searchbar />
         <Filters />
         <Order />
-        <Link to="/home/creation" className={Style.create}>Create Breed</Link>
+        <Link to="/home/creation" className={Style.create}>
+          Create Breed
+        </Link>
       </nav>
     </header>
   );
