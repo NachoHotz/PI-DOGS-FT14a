@@ -32,7 +32,7 @@ input {
 }
 
 .error {
- text-align: center;
+  text-align: center;
   color: #ff0000;
   background-color: black;
   font-size: 10px;
@@ -59,7 +59,7 @@ input {
   height: 30px;
   background-color: white;
   padding: 5px;
-  width: 7%
+  width: 7%;
 }
 
 .createbtn:hover {

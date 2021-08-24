@@ -63,7 +63,9 @@ export default function Create() {
 
   const handleTempChange = (e) => {
     if (breed.temperament.includes(Number(e.target.value))) {
-      return alert('You have already selected that temperament, plase select another one.');
+      return alert(
+        'You have already selected that temperament, plase select another one.',
+      );
     }
 
     setBreed((prev) => ({
@@ -93,7 +95,9 @@ export default function Create() {
   return (
     <main className={Style.body}>
       <section>
-        <Link to="/home/" className={Style.link}>Back Home</Link>
+        <Link to="/home/" className={Style.link}>
+          Back Home
+        </Link>
         <form onSubmit={handleSubmit} className={Style.form}>
           <section>
             <label>Name: </label>
@@ -152,28 +156,28 @@ export default function Create() {
               value={breed.image}
             />
           </section>
-          <span className={Style.select}>Select Temperaments (your new dog can have more than one or none):</span>
-          <select key={temperaments.id} className={Style.selectCheck} onChange={handleTempChange}>
-            {
-          temperaments?.map((temp) => (
-            <option
-              name="temperaments"
-              value={temp.id}
-              key={temp.id}
-            >
-              {temp.name}
-            </option>
-          ))
-        }
+          <span className={Style.select}>
+            Select Temperaments (your new dog can have more than one or none):
+          </span>
+          <select
+            key={temperaments.id}
+            className={Style.selectCheck}
+            onChange={handleTempChange}
+          >
+            {temperaments?.map((temp) => (
+              <option name="temperaments" value={temp.id} key={temp.id}>
+                {temp.name}
+              </option>
+            ))}
           </select>
           <div>
-            {
-              breed.temperament.map((temp) => (
-                <h5>{temp}</h5>
-              ))
-            }
+            {breed.temperament.map((temp) => (
+              <h5>{temp}</h5>
+            ))}
           </div>
-          <button type="submit" className={Style.createbtn}>Create</button>
+          <button type="submit" className={Style.createbtn}>
+            Create
+          </button>
         </form>
       </section>
     </main>
