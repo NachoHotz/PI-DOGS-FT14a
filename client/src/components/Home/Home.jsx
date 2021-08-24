@@ -49,9 +49,7 @@ export default function Home() {
 
   const renderBreeds = (current) => {
     if (current.length === 0) {
-      return (
-        <h2 className={Style.noResults}>Loading...</h2>
-      );
+      return <h2 className={Style.noResults}>Loading...</h2>;
     }
 
     current?.map((breed) => {
@@ -66,17 +64,19 @@ export default function Home() {
 
     return (
       <div className={Style.body}>
-        {
-            current.map((breed) => (
-              <div key={breed.id} className={Style.container}>
-                <Link to={`/home/${breed.id}`}>
-                  <img className={Style.image} src={breed.image.url} alt="Not found" />
-                </Link>
-                <h4 className={Style.name}>{breed.name}</h4>
-                <h5 className={Style.temperament}>{breed.temperament}</h5>
-              </div>
-            ))
-      }
+        {current.map((breed) => (
+          <div key={breed.id} className={Style.container}>
+            <Link to={`/home/${breed.id}`}>
+              <img
+                className={Style.image}
+                src={breed.image.url}
+                alt="Not found"
+              />
+            </Link>
+            <h4 className={Style.name}>{breed.name}</h4>
+            <h5 className={Style.temperament}>{breed.temperament}</h5>
+          </div>
+        ))}
       </div>
     );
   };
@@ -105,12 +105,12 @@ export default function Home() {
 
   let pageIncrementBtn = null;
   if (pages.length > maxPageNumberLimit) {
-    pageIncrementBtn = <li onClick={handleNextClick}> &hellip;  </li>;
+    pageIncrementBtn = <li onClick={handleNextClick}> &hellip; </li>;
   }
 
   let pageDecrementBtn = null;
   if (minPageNumberLimit >= 1) {
-    pageDecrementBtn = <li onClick={handleNextClick}> &hellip;  </li>;
+    pageDecrementBtn = <li onClick={handleNextClick}> &hellip; </li>;
   }
 
   return (
@@ -120,7 +120,11 @@ export default function Home() {
         <button
           onClick={handlePrevClick}
           disabled={currentPage === pages[0]}
-          className={currentPage === pages[0] || breeds.length === 0 ? Style.disabled : 'active'}
+          className={
+            currentPage === pages[0] || breeds.length === 0
+              ? Style.disabled
+              : 'active'
+          }
         >
           Prev
         </button>
@@ -130,7 +134,11 @@ export default function Home() {
         <button
           onClick={handleNextClick}
           disabled={currentPage === pages[pages.length - 1]}
-          className={currentPage === pages[pages.length - 1] || breeds.length === 0 ? Style.disabled : 'active'}
+          className={
+            currentPage === pages[pages.length - 1] || breeds.length === 0
+              ? Style.disabled
+              : 'active'
+          }
         >
           Next
         </button>
