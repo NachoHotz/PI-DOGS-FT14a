@@ -19,7 +19,9 @@ module.exports = {
         }
       }
       const breedId = req.params.id;
-      const breedDbId = await Dog.findByPk(breedId, { include: { model: Temperament } });
+      const breedDbId = await Dog.findByPk(breedId, {
+        include: { model: Temperament },
+      });
       return res.json(breedDbId);
     } catch (e) {
       next(e);
