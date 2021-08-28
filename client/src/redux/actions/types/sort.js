@@ -36,7 +36,7 @@ export function Sort(method) {
         if (parseInt(a.weight.metric) < parseInt(b.weight.metric)) return -1;
         return 0;
       });
-      return dispatch({ type: actionTypesSORT_WEIGHT_ASC, payload: breedsSorted });
+      return dispatch({ type: actionTypes.SORT_WEIGHT_ASC, payload: breedsSorted });
     }
 
     if (method === 'Heavy') {

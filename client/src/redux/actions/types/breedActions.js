@@ -30,7 +30,20 @@ export function getBreedsByName(name) {
 }
 
 export function getBreedsByTemp(temp) {
-  return { type: actionTypes.GET_BREEDS_TEMP, payload: temp };
+  return async function (dispatch) {
+    const { data } = await axios.get(`${endpoints.BREEDS_ENDPOINT}`);
+
+    const filtered = [];
+    data?.forEach((b) => {
+      if (b.id.length > 3) {
+        b.temperaments.map((t) => (t.name === temp ? filtered.push(b) : null));
+      }
+      if (b.temperament?.includes(temp)) {
+        filtered.push(b);
+      }
+    });
+    dispatch({ type: actionTypes.GET_BREEDS_TEMP, payload: filtered });
+  };
 }
 
 export function getBreedsCreator(creator) {
