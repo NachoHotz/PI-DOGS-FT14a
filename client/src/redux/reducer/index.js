@@ -18,38 +18,10 @@ const rootReducer = (state = initialState, action) => {
     case actionTypes.GET_TEMPERAMENTS: return { ...state, temperaments: action.payload };
     case actionTypes.CREATE_BREED: return { ...state, allBreeds: state.allBreeds.concat(action.payload) };
     case actionTypes.GET_BREEDS_TEMP: return { ...state, allBreeds: action.payload };
-    case actionTypes.SORT_NAME_ASC: return {
-      ...state,
-      allBreeds: state.allBreeds.sort((a, b) => {
-        if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-        if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-        return 0;
-      }),
-    };
-    case actionTypes.SORT_NAME_DESC: return {
-      ...state,
-      allBreeds: state.allBreeds.sort((a, b) => {
-        if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
-        if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
-        return 0;
-      }),
-    };
-    case actionTypes.SORT_WEIGHT_ASC: return {
-      ...state,
-      allBreeds: state.allBreeds.sort((a, b) => {
-        if (parseInt(a.weight.metric) > parseInt(b.weight.metric)) return 1;
-        if (parseInt(a.weight.metric) < parseInt(b.weight.metric)) return -1;
-        return 0;
-      }),
-    };
-    case actionTypes.SORT_WEIGHT_DESC: return {
-      ...state,
-      allBreeds: state.allBreeds.sort((a, b) => {
-        if (parseInt(a.weight.metric) < parseInt(b.weight.metric)) return 1;
-        if (parseInt(a.weight.metric) > parseInt(b.weight.metric)) return -1;
-        return 0;
-      }),
-    };
+    case actionTypes.SORT_NAME_ASC: return { ...state, allBreeds: action.payload };
+    case actionTypes.SORT_NAME_DESC: return { ...state, allBreeds: action.payload };
+    case actionTypes.SORT_WEIGHT_ASC: return { ...state, allBreeds: action.payload };
+    case actionTypes.SORT_WEIGHT_DESC: return { ...state, allBreeds: action.payload };
     case 'all': return { ...state, allBreeds: action.payload };
     case 'created': return { ...state, allBreeds: state.allBreeds.filter(breed => breed.id.length > 3).sort() };
     case 'notcreated': return { ...state, allBreeds: state.allBreeds.filter(breed => breed.id < 300).sort() };
