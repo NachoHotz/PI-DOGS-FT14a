@@ -1,25 +1,22 @@
-.search_container {
-  margin-top: 20px;
-}
-
 .search_input {
-  height: 10%;
+  height: 5%;
   padding: 5px;
-  font-size: 100%;
 }
 
 .searchbtn {
-  background-color: white;
+  background-color: black;
   border: 0px solid black;
-  margin-left: 5px;
-  border-radius: 5px;
-  padding: 7px;
-  font-size: 20px;
+  margin-left: 10px;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: large;
+  color: white;
 }
 
 .searchbtn:hover {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
+  font-weight: bold;
   transition: 0.25s;
   cursor: pointer;
 }
