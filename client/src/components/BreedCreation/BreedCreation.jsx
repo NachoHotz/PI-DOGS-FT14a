@@ -89,7 +89,7 @@ export default function Create() {
         temperament: [],
       });
     } else {
-      alert('Error =', errors);
+      alert('There was an error. Please try again.');
     }
   };
   return (
