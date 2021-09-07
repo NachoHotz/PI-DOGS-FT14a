@@ -156,9 +156,9 @@ export default function Create() {
               value={breed.image}
             />
           </section>
-          <span className={Style.select}>
+          <p className={Style.select}>
             Select Temperaments (your new dog can have more than one or none):
-          </span>
+          </p>
           <select
             key={temperaments.id}
             className={Style.selectCheck}
