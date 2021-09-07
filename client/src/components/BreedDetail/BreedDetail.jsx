@@ -47,13 +47,13 @@ export default function BreedDetail() {
         <section>
           <h3>{detail[0].name}</h3>
         </section>
-        <h4>Height (cm): {detail[0].height.metric}</h4>
-        <h4>Weight (kg): {detail[0].weight.metric}</h4>
-        <h4>Life span: {detail[0].life_span}</h4>
+        <p>Height (cm): {detail[0].height.metric}</p>
+        <p>Weight (kg): {detail[0].weight.metric}</p>
+        <p>Life span: {detail[0].life_span}</p>
         {detail[0].temperament ? (
-          <h4>Temperaments: {detail[0].temperament}</h4>
+          <p>{detail[0].temperament}</p>
         ) : (
-          <h4>Temperaments: None</h4>
+          <p>Temperaments: <span className={Style.no_temperaments}>None</span></p>
         )}
       </section>
     </main>
