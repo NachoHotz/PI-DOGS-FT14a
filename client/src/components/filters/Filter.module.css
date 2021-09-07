@@ -1,29 +1,27 @@
-.filters {
+.filters_container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .tempselect {
-  margin-left: 30px;
+  margin-left: 10px;
+}
+
+.tempselect:hover {
+  cursor:  pointer;
 }
 
 .temperament {
   font-weight: bolder;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .creator {
   font-weight: bolder;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .creatorSelect {
-  margin-left: 40px;
+  margin-left: 10px;
 }
 
 .creatorSelect:hover {
