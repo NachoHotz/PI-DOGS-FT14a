@@ -1,20 +1,27 @@
+.header {
+  background-color: black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .navBar_container {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .create {
-  font-weight: bolder;
+  display: flex;
   border-radius: 5px;
-  color: black;
+  width: fit-content;
+  color: white;
   padding: 5px;
   text-decoration: none;
 }
 
 .create:hover {
-  background-color: black;
-  color: white;
+  font-weight: bold;
+  background-color: white;
+  color: black;
   transition: 0.25s;
 }
