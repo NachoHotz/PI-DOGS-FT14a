@@ -17,7 +17,7 @@ export default function Order() {
   }
 
   return (
-    <div className={Style.ordercontainer}>
+    <section className={Style.ordercontainer}>
       <p className={Style.title}>Order By: </p>
       <select
         name="Sort"
@@ -29,6 +29,6 @@ export default function Order() {
         <option value="Light">Weigth - to +</option>
         <option value="Heavy">Weight + to -</option>
       </select>
-    </div>
+    </section>
   );
 }
