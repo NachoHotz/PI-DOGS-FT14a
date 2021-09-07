@@ -115,7 +115,7 @@ export default function Create() {
             <input
               name="height"
               type="text"
-              placeholder="Height (min-max in cm)"
+              placeholder="min-max in cm"
               onChange={handleInputChange}
               value={breed.height}
               required
@@ -127,7 +127,7 @@ export default function Create() {
             <input
               name="weight"
               type="text"
-              placeholder="Weight (min-max in kg)"
+              placeholder="min-max in kg"
               onChange={handleInputChange}
               value={breed.weight}
               required
