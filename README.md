@@ -68,16 +68,16 @@ Then, execute `npm start` on both folders to initialize the database, and the cl
 
 #### Landing Page
 
-![landing](https://user-images.githubusercontent.com/72778896/130497918-0bd147cf-2c6a-41f1-b2eb-e78f70cf7496.jpg)
+![Landing](https://user-images.githubusercontent.com/72778896/132437674-45b0dd69-d5b8-436f-9b2f-3761f49c549e.jpg)
 
 #### Home Page
 
-![home2](https://user-images.githubusercontent.com/72778896/130499340-b3e89b7d-b3a0-4b02-94b2-cb7fd97727bf.jpg)
+![Home](https://user-images.githubusercontent.com/72778896/132437689-275649f2-250c-4abb-9caf-5c5987bca08e.jpg)
 
 #### Detail Page
 
-![detail](https://user-images.githubusercontent.com/72778896/130498004-b3cc7baa-1bb9-428b-b882-426eeb3676e3.jpg)
+![Detail](https://user-images.githubusercontent.com/72778896/132437708-c86c8b62-caf0-4867-8a60-85e655b5786e.jpg)
 
 #### Create page
 
-![create](https://user-images.githubusercontent.com/72778896/130498042-2c12f68f-41da-423b-b8c0-96eacbfe61b1.jpg)
+![Create form](https://user-images.githubusercontent.com/72778896/132437721-da688eb4-c627-4d07-bba2-d73aae4e1e67.jpg)
