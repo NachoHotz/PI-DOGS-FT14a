@@ -92,70 +92,64 @@ export default function Create() {
       alert('There was an error. Please try again.');
     }
   };
+
   return (
     <main className={Style.body}>
       <section>
         <Link to="/home/" className={Style.link}>
           Back Home
         </Link>
+      </section>
+      <section>
         <form onSubmit={handleSubmit} className={Style.form}>
-          <section>
-            <label>Name: </label>
-            <input
-              name="name"
-              type="text"
-              onChange={handleInputChange}
-              value={breed.name}
-              required
-            />
-            <p className={Style.error}>{errors.name}</p>
-          </section>
-          <section>
-            <label>Height: </label>
-            <input
-              name="height"
-              type="text"
-              placeholder="min-max in cm"
-              onChange={handleInputChange}
-              value={breed.height}
-              required
-            />
-            <p className={Style.error}>{errors.height}</p>
-          </section>
-          <section>
-            <label>Weight: </label>
-            <input
-              name="weight"
-              type="text"
-              placeholder="min-max in kg"
-              onChange={handleInputChange}
-              value={breed.weight}
-              required
-            />
-            <p className={Style.error}>{errors.weight}</p>
-          </section>
-          <section>
-            <label>Lifespan: </label>
-            <input
-              name="life_span"
-              type="text"
-              placeholder="Lifespan + 'years'"
-              onChange={handleInputChange}
-              value={breed.life_span}
-              required
-            />
-            <p className={Style.error}>{errors.life_span}</p>
-          </section>
-          <section>
-            <label>Image: </label>
-            <input
-              name="image"
-              type="text"
-              placeholder="link/url"
-              onChange={handleInputChange}
-              value={breed.image}
-            />
-          </section>
+          <h4 className={Style.header}>Create your own breed!</h4>
+          <label>Name: </label>
+          <input
+            name="name"
+            type="text"
+            onChange={handleInputChange}
+            value={breed.name}
+            required
+          />
+          <p className={Style.error}>{errors.name}</p>
+          <label>Height: </label>
+          <input
+            name="height"
+            type="text"
+            placeholder="min-max in cm"
+            onChange={handleInputChange}
+            value={breed.height}
+            required
+          />
+          <p className={Style.error}>{errors.height}</p>
+          <label>Weight: </label>
+          <input
+            name="weight"
+            type="text"
+            placeholder="min-max in kg"
+            onChange={handleInputChange}
+            value={breed.weight}
+            required
+          />
+          <p className={Style.error}>{errors.weight}</p>
+          <label>Lifespan: </label>
+          <input
+            name="life_span"
+            type="text"
+            placeholder="Lifespan + 'years'"
+            onChange={handleInputChange}
+            value={breed.life_span}
+            required
+          />
+          <p className={Style.error}>{errors.life_span}</p>
+          <label>Image: </label>
+          <input
+            name="image"
+            type="text"
+            placeholder="link/url"
+            onChange={handleInputChange}
+            value={breed.image}
+          />
           <p className={Style.select}>
             Select Temperaments (your new dog can have more than one or none):
           </p>
@@ -172,7 +166,9 @@ export default function Create() {
           </select>
           <div>
             {breed.temperament.map((temp) => (
-              <h5>{temp}</h5>
+              <div className={Style.selectedTemps}>
+                <h5 className={Style.temp}>{temp}</h5>
+              </div>
             ))}
           </div>
           <button type="submit" className={Style.createbtn}>
