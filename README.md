@@ -64,7 +64,7 @@ npm install
 
 Then, execute `npm start` on both folders to initialize the database, and the client to run the app.
 
-### Screenshots
+## Screenshots
 
 #### Landing Page
 
