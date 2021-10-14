@@ -1,15 +1,23 @@
-.container {
+.main_container {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
   flex-direction: column;
+  height: auto;
+  width: 420px;
   border-radius: 10px;
+  border: 1px solid black;
   margin-top: 20px;
   padding: 10px;
   background-color: white;
 }
 
-.image {
+.container img {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,11 +44,4 @@
   transition: 0.25s;
   border-radius: 5px;
   padding: 10px;
-}
-
-.temperaments {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
 }

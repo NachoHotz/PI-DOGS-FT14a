@@ -99,10 +99,10 @@ export default function Create() {
         <Link to="/home/" className={Style.link}>
           Back Home
         </Link>
+        <h4 className={Style.header}>Create your own breed!</h4>
       </section>
-      <section>
-        <form onSubmit={handleSubmit} className={Style.form}>
-          <h4 className={Style.header}>Create your own breed!</h4>
+      <section className={Style.form_container}>
+        <form onSubmit={handleSubmit}>
           <label>Name: </label>
           <input
             name="name"
@@ -171,7 +171,7 @@ export default function Create() {
               </div>
             ))}
           </div>
-          <button type="submit" className={Style.createbtn}>
+          <button type="submit">
             Create
           </button>
         </form>

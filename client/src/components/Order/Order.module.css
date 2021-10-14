@@ -5,11 +5,11 @@
   justify-content: center;
 }
 
-.title {
+.ordercontainer p {
   font-weight: bolder;
 }
 
-.selectcontainer {
+.ordercontainer select {
   margin-bottom: 10px;
   margin-left: 10px;
 }

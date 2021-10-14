@@ -38,23 +38,21 @@ export default function BreedDetail() {
           Back Home
         </Link>
       </section>
-      <section className={Style.container}>
-        <img
-          className={Style.image}
-          src={detail[0].image.url}
-          alt="Not found"
-        />
-        <section>
+      <section className={Style.main_container}>
+        <section className={Style.container}>
+          <img src={detail[0].image.url} alt="Not found" />
           <h3>{detail[0].name}</h3>
+          <p>Height (cm): {detail[0].height.metric}</p>
+          <p>Weight (kg): {detail[0].weight.metric}</p>
+          <p>Life span: {detail[0].life_span}</p>
+          {detail[0].temperament ? (
+            <p>{detail[0].temperament}</p>
+          ) : (
+            <p>
+              Temperaments: <span>None</span>
+            </p>
+          )}
         </section>
-        <p>Height (cm): {detail[0].height.metric}</p>
-        <p>Weight (kg): {detail[0].weight.metric}</p>
-        <p>Life span: {detail[0].life_span}</p>
-        {detail[0].temperament ? (
-          <p>{detail[0].temperament}</p>
-        ) : (
-          <p>Temperaments: <span className={Style.no_temperaments}>None</span></p>
-        )}
       </section>
     </main>
   );

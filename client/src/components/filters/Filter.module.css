@@ -2,28 +2,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 50px;
 }
 
-.tempselect {
+.filters_container article {
+  margin-left: 20px;
+}
+
+.filters_container article p {
+  font-weight: bold;
   margin-left: 10px;
 }
 
-.tempselect:hover {
-  cursor:  pointer;
-}
-
-.temperament {
-  font-weight: bolder;
-}
-
-.creator {
-  font-weight: bolder;
-}
-
-.creatorSelect {
-  margin-left: 10px;
-}
-
-.creatorSelect:hover {
+select {
+  margin-left: 25px;
   cursor: pointer;
 }

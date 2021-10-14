@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBreeds } from '../../redux/actions/types/breedActions';
 import Nav from '../Nav/Nav';
-import Filter from '../Filters/Filter';
+import Filter from '../filters/Filter';
 import Order from '../Order/Order';
 import Style from './Home.module.css';
 
