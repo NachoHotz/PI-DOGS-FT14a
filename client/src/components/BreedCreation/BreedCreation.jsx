@@ -171,9 +171,7 @@ export default function Create() {
               </div>
             ))}
           </div>
-          <button type="submit">
-            Create
-          </button>
+          <button type="submit">Create</button>
         </form>
       </section>
     </main>
