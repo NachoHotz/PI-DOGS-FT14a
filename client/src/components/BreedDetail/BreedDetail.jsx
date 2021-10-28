@@ -32,14 +32,14 @@ export default function BreedDetail() {
   }
 
   return (
-    <main>
-      <section>
+    <div>
+      <aside>
         <Link to="/home" className={Style.link}>
           Back Home
         </Link>
-      </section>
+      </aside>
       <section className={Style.main_container}>
-        <section className={Style.container}>
+        <article className={Style.container}>
           <img src={detail[0].image.url} alt="Not found" />
           <h3>{detail[0].name}</h3>
           <p>Height (cm): {detail[0].height.metric}</p>
@@ -52,8 +52,8 @@ export default function BreedDetail() {
               Temperaments: <span>None</span>
             </p>
           )}
-        </section>
+        </article>
       </section>
-    </main>
+    </div>
   );
 }
