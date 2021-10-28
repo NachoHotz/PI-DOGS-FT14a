@@ -20,7 +20,7 @@ export default function Filter() {
     } else {
       return null;
     }
-  }, []);
+  }, [dispatch, temperaments.length]);
 
   const handleTempChange = (e) => {
     setSelectedTemp(e.target.value);

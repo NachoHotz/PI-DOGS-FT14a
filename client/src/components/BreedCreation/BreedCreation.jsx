@@ -45,7 +45,7 @@ export default function Create() {
 
   useEffect(() => {
     dispatch(getTemperaments());
-  }, []);
+  }, [dispatch]);
 
   const handleInputChange = (e) => {
     setBreed({

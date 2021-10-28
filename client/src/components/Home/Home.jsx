@@ -85,7 +85,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getBreeds());
-  }, []);
+  }, [dispatch]);
 
   const handleNextClick = () => {
     setCurrentPage(currentPage + 1);
