@@ -65,9 +65,9 @@ export default function Home() {
     });
 
     return (
-      <div className={Style.body}>
+      <main className={Style.body}>
         {current.map((breed) => (
-          <div key={breed.id} className={Style.container}>
+          <article key={breed.id} className={Style.container}>
             <Link to={`/home/${breed.id}`}>
               <img
                 className={Style.image}
@@ -77,9 +77,9 @@ export default function Home() {
             </Link>
             <h4 className={Style.name}>{breed.name}</h4>
             <h5 className={Style.temperament}>{breed.temperament}</h5>
-          </div>
+          </article>
         ))}
-      </div>
+      </main>
     );
   };
 
@@ -116,7 +116,7 @@ export default function Home() {
   }
 
   return (
-    <main>
+    <div>
       <Nav />
       <Filter />
       <Order />
@@ -148,6 +148,6 @@ export default function Home() {
         </button>
       </ul>
       {renderBreeds(currentItems)}
-    </main>
+    </div>
   );
 }
