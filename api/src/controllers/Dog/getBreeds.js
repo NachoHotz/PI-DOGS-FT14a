@@ -36,15 +36,10 @@ module.exports = {
           const [dogsApiResponse, dogsDbResponse] = response;
           const result = dogsDbResponse.concat(dogsApiResponse.data);
 
-          const finalResults = [];
+          const finalResults = result.filter((breed) => breed.name.toLowerCase().includes(name.toLowerCase()));
 
-          for (let i = 0; i < result.length; i++) {
-            if (result[i].name.toLowerCase().includes(name.toLowerCase())) {
-              finalResults.push(result[i]);
-            }
-          }
-          if (finalResults === []) {
-            res.status(404).send('No dogs found, please try again.');
+          if (finalResults === [] || finalResults.length === 0) {
+            res.status(404).send('No dogs found with that search term.');
           }
           res.status(200).json(finalResults);
         });
