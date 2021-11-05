@@ -8,8 +8,9 @@ const { API_KEY } = process.env;
 module.exports = {
   getBreedById: async (req, res, next) => {
     try {
+      let breedId = req.params.id;
       if (req.params.id.length < 4) {
-        const breedId = Number(req.params.id);
+        breedId = Number(req.params.id);
         const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
 
         const detail = data.find((breed) => breed.id === breedId);
@@ -18,7 +19,6 @@ module.exports = {
           return res.json(detail);
         }
       }
-      const breedId = req.params.id;
       const breedDbId = await Dog.findByPk(breedId, {
         include: { model: Temperament },
       });
