@@ -10,7 +10,7 @@ module.exports = {
     try {
       let breedId = req.params.id;
       if (req.params.id.length < 4) {
-        breedId = Number(req.params.id);
+        breedId = Number(breedId);
         const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
 
         const detail = data.find((breed) => breed.id === breedId);
