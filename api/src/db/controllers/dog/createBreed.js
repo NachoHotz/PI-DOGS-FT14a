@@ -18,7 +18,7 @@ module.exports = {
       const dogExist = await Dog.findOne({ where: { name } });
 
       if (dogExist) {
-        return res.send('There already exists a dog breed with the sama name. Please choose another one.');
+        return res.status(400).send('There already exists a dog breed with the sama name. Please choose another one.');
       }
 
       const createdBreed = await Dog.create({
@@ -30,7 +30,7 @@ module.exports = {
         image: { url: image },
       });
       await createdBreed.addTemperament(temperament);
-      return res.json(createdBreed);
+      return res.status(200).json(createdBreed);
     } catch (e) {
       next(e);
     }
