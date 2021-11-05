@@ -14,18 +14,16 @@ module.exports = {
 
       if (temperamentInDb.length === 0) {
         const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
-        const temperamentsList = data;
 
-        for (let i = 0; i < temperamentsList.length; i++) {
-          const temperamentsListSplitted = temperamentsList[i].temperament?.split(', ');
+        let temperamentsList = data.map((breed) => breed.temperament?.split(', '));
 
-          for (let j = 0; j < temperamentsListSplitted?.length; j++) {
-            await Temperament.findOrCreate({ where: { name: temperamentsListSplitted[j] } });
-          }
-        }
-        res.json(temperamentInDb);
+        temperamentsList = [...new Set(temperamentsList.flat(Infinity))].filter((temp) => temp !== undefined);
+
+        temperamentsList.forEach(async (temp) => await Temperament.findOrCreate({ where: { name: temp } }))
+
+        res.status(200).json(temperamentInDb);
       } else {
-        res.json(temperamentInDb);
+        res.status(200).json(temperamentInDb);
       }
     } catch (e) {
       next(e);
