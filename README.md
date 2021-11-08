@@ -27,11 +27,17 @@ Builded using the PERN stack, and the [dogs api](https://thedogapi.com).
 To run this project, first you will need to add the following environment variables to your .env file.
 
 `API_KEY` - which you will get by creating an account on the [dogs api](https://thedogapi.com).
+
 `DB_USER` - your database username.
+
 `DB_PASSWORD` - your database password.
+
 `DB_HOST`- the host where your database is located.
+
 `DB_NAME`- the name of your database.
+
 `DB_PORT` - the port from where your database is listening.
+
 `API_PORT` - the port from where your api is listening
 
 Then, follow the steps below:
