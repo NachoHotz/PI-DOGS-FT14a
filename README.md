@@ -40,6 +40,8 @@ To run this project, first you will need to add the following environment variab
 
 `API_PORT` - the port from where your api is listening
 
+#### The import and use of these environment variables is already done by the app.
+
 Then, follow the steps below:
 
 ---
