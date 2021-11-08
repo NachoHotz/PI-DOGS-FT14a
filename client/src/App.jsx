@@ -4,7 +4,6 @@ import Landing from './components/Landing/Landing';
 import Home from './components/Home/Home';
 import BreedDetail from './components/BreedDetail/BreedDetail';
 import BreedCreation from './components/BreedCreation/BreedCreation';
-import './App.css';
 
 function App() {
   return (
