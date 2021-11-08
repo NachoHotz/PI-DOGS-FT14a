@@ -41,12 +41,20 @@ module.exports = {
         const finalResults = result.filter((breed) => breed.name.toLowerCase().includes(name.toLowerCase()));
 
         if (finalResults === [] || finalResults.length === 0) {
-          return res.status(404).send('No dogs found with that search term.');
+          return res.status(404).send({
+            success: false,
+            error: 404,
+            message: 'No dogs found with that name.',
+          });
         }
         return res.status(200).json(finalResults);
       }
     } catch (e) {
-      return res.status(500).send('There was an error, please try again.');
+      return res.status(500).send({
+        success: false,
+        error: 500,
+        message: 'There was an error. Please try again.'
+      });
     }
   },
 };

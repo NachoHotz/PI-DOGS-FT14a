@@ -17,13 +17,22 @@ module.exports = {
         const detail = data.find((breed) => breed.id === breedId);
 
         if (detail) {
-          return res.json(detail);
+          return res.status(200).json(detail);
         }
       }
       const breedDbId = await Dog.findByPk(breedId, {
         include: { model: Temperament },
       });
-      return res.json(breedDbId);
+
+      if (!breedDbId || breedDbId === {}) {
+        return res.status(404).send({
+          success: false,
+          error: 404,
+          message: 'No dog found with that id.',
+        })
+      }
+
+      return res.status(200).json(breedDbId);
     } catch (e) {
       next(e);
     }
