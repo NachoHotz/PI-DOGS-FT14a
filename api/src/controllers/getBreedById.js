@@ -1,8 +1,8 @@
 /* eslint-disable consistent-return */
 const axios = require('axios').default;
-const { API_URL } = require('../../endpoints');
-const { Dog, Temperament } = require('../../db/index');
-const config = require('../../lib/config');
+const { API_URL } = require('../endpoints');
+const { Dog, Temperament } = require('../db/index');
+const config = require('../lib/config');
 
 const { API_KEY } = config;
 

@@ -3,10 +3,10 @@
 /* eslint-disable no-plusplus */
 const axios = require('axios').default;
 const { Op } = require('sequelize');
-const { API_URL } = require('../../endpoints');
-const { getBreedsDb } = require('../../db/controllers/dog/getBreedsDb');
-const { Dog, Temperament } = require('../../db/index');
-const config = require('../../lib/config');
+const { API_URL } = require('../endpoints');
+const { getBreedsDb } = require('../db/controllers/dog/getBreedsDb');
+const { Dog, Temperament } = require('../db/index');
+const config = require('../lib/config');
 
 const { API_KEY } = config;
 
