@@ -18,7 +18,11 @@ module.exports = {
       const dogExist = await Dog.findOne({ where: { name } });
 
       if (dogExist) {
-        return res.status(400).send('There already exists a dog breed with the sama name. Please choose another one.');
+        return res.status(400).send({
+          success: false,
+          error: 400,
+          message: 'There already exists a dog with the given name.',
+        });
       }
 
       const createdBreed = await Dog.create({
