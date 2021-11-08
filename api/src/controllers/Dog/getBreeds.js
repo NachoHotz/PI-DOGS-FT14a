@@ -6,8 +6,9 @@ const { Op } = require('sequelize');
 const { API_URL } = require('../../endpoints');
 const { getBreedsDb } = require('../../db/controllers/dog/getBreedsDb');
 const { Dog, Temperament } = require('../../db/index');
+const config = require('../../lib/config');
 
-const { API_KEY } = process.env;
+const { API_KEY } = config;
 
 module.exports = {
   getBreeds: async (req, res) => {
