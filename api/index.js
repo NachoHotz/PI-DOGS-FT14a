@@ -20,9 +20,11 @@
 const server = require('./src/app');
 const { conn } = require('./src/db/index');
 
+const config = require('./src/lib/config');
+
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+  server.listen(config.API_PORT, () => {
+    console.log(`%s listening at ${config.API_PORT}`); // eslint-disable-line no-console
   });
 });
