@@ -1,6 +1,6 @@
 const { Router } = require('express');
-const { getBreeds } = require('../controllers/Dog/getBreeds');
-const { getBreedById } = require('../controllers/Dog/getBreedById');
+const { getBreeds } = require('../controllers/getBreeds');
+const { getBreedById } = require('../controllers/getBreedById');
 const { createBreed } = require('../db/controllers/dog/createBreed');
 const { deleteBreed } = require('../db/controllers/dog/deleteDog');
 
