@@ -18,7 +18,6 @@ module.exports = {
         let temperamentsList = data.map((breed) => breed.temperament?.split(', '));
 
         temperamentsList = [...new Set(temperamentsList.flat(2))].filter((temp) => temp !== undefined);
-        console.log(temperamentsList);
 
         temperamentsList.forEach(async (temp) => await Temperament.findOrCreate({ where: { name: temp } }))
 
