@@ -8,14 +8,14 @@ const config = require('./lib/config');
 
 require('./db/index');
 
-if (config.NODE_ENV === 'development') {
-  const morgan = require('morgan');
-  server.user(morgan('dev'));
-}
-
 const server = express();
 
 server.name = 'API';
+
+if (config.NODE_ENV === 'development') {
+  const morgan = require('morgan');
+  server.use(morgan('dev'));
+}
 
 server.use(express.urlencoded({ extended: true, limit: '50mb' }));
 server.use(express.json({ limit: '50mb' }));
