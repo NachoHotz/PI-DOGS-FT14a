@@ -2,11 +2,16 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const morgan = require('morgan');
 const routes = require('./routes/index');
 const setHeaders = require('./middlewares/setHeaders');
+const config = require('./lib/config');
 
 require('./db/index');
+
+if (config.NODE_ENV === 'development') {
+  const morgan = require('morgan');
+  server.user(morgan('dev'));
+}
 
 const server = express();
 
@@ -15,13 +20,13 @@ server.name = 'API';
 server.use(express.urlencoded({ extended: true, limit: '50mb' }));
 server.use(express.json({ limit: '50mb' }));
 server.use(cookieParser());
-server.use(morgan('dev'));
-server.use(setHeaders)
+server.use(setHeaders);
 
 server.use('/', routes);
 
 // Error catching endware.
-server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+server.use((err, _req, res, _next) => {
+  // eslint-disable-line no-unused-vars
   const status = err.status || 500;
   const message = err.message || err;
   console.error(err);
