@@ -38,7 +38,9 @@ module.exports = {
         const [dogsApiResponse, dogsDbResponse] = promisesResponse;
 
         const result = dogsDbResponse.concat(dogsApiResponse.data);
-        const finalResults = result.filter((breed) => breed.name.toLowerCase().includes(name.toLowerCase()));
+        const finalResults = result.filter((breed) =>
+          breed.name.toLowerCase().includes(name.toLowerCase()),
+        );
 
         if (finalResults === [] || finalResults.length === 0) {
           return res.status(404).send({
@@ -53,7 +55,7 @@ module.exports = {
       return res.status(500).send({
         success: false,
         error: 500,
-        message: 'There was an error. Please try again.'
+        message: 'There was an error. Please try again.',
       });
     }
   },

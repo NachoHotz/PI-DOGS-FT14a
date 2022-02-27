@@ -15,21 +15,25 @@ const dog = {
 };
 
 describe('Dog routes', () => {
-  before(() => conn.authenticate()
-    .catch((err) => {
+  before(() =>
+    conn.authenticate().catch((err) => {
       console.error('Unable to connect to the database:', err);
-    }));
-  beforeEach(() => Dog.sync({ force: true })
-    .then(() => Dog.create(dog)));
+    }),
+  );
+  beforeEach(() => Dog.sync({ force: true }).then(() => Dog.create(dog)));
   describe('GET /dogs', () => {
     it('should get 200', () => agent.get('/dogs').expect(200));
-    it('The parameters that GET receives are objects', () => agent
-      .get('/dogs')
-      .expect((res) => expect(typeof res.body[0]).equal('object'))).timeout(5000);
+    it('The parameters that GET receives are objects', () =>
+      agent
+        .get('/dogs')
+        .expect((res) => expect(typeof res.body[0]).equal('object'))).timeout(
+      5000,
+    );
   });
   describe('GET /dogs?name', () => {
-    it('should return 200 if it finds a dog', () => agent
-      .get('/dogs?name=bulldog')
-      .expect((res) => expect(res.status).equal(200))).timeout(5000);
+    it('should return 200 if it finds a dog', () =>
+      agent
+        .get('/dogs?name=bulldog')
+        .expect((res) => expect(res.status).equal(200))).timeout(5000);
   });
 });

@@ -29,7 +29,7 @@ module.exports = {
           success: false,
           error: 404,
           message: 'No dog found with that id.',
-        })
+        });
       }
 
       return res.status(200).json(breedDbId);

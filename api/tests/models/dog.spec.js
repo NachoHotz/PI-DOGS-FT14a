@@ -3,10 +3,11 @@ const { expect } = require('chai');
 const { Dog, conn } = require('../../src/db/index');
 
 describe('Dog model', () => {
-  before(() => conn.authenticate()
-    .catch((err) => {
+  before(() =>
+    conn.authenticate().catch((err) => {
       console.error('Unable to connect to the database:', err);
-    }));
+    }),
+  );
   describe('Validators', () => {
     beforeEach(() => Dog.sync({ force: true }));
     describe('name', () => {

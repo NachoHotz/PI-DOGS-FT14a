@@ -6,14 +6,7 @@ const { Dog, Temperament } = require('../../index');
 module.exports = {
   createBreed: async (req, res, next) => {
     try {
-      const {
-        name,
-        height,
-        weight,
-        life_span,
-        image,
-        temperament,
-      } = req.body;
+      const { name, height, weight, life_span, image, temperament } = req.body;
 
       const dogExist = await Dog.findOne({ where: { name } });
 
