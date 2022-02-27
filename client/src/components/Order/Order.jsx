@@ -19,10 +19,7 @@ export default function Order() {
   return (
     <section className={Style.ordercontainer}>
       <p>Order By: </p>
-      <select
-        name="Sort"
-        onChange={(e) => handleChange(e)}
-      >
+      <select name="Sort" onChange={(e) => handleChange(e)}>
         <option value="A-Z">A - Z</option>
         <option value="Z-A">Z - A</option>
         <option value="Light">Weigth - to +</option>

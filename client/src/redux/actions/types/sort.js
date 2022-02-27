@@ -16,7 +16,10 @@ export function Sort(method) {
         if (a.name > b.name) return 1;
         return 0;
       });
-      return dispatch({ type: actionTypes.SORT_NAME_ASC, payload: breedsSorted });
+      return dispatch({
+        type: actionTypes.SORT_NAME_ASC,
+        payload: breedsSorted,
+      });
     }
 
     if (method === 'Z-A') {
@@ -26,7 +29,10 @@ export function Sort(method) {
         if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
         return 0;
       });
-      return dispatch({ type: actionTypes.SORT_NAME_DESC, payload: breedsSorted });
+      return dispatch({
+        type: actionTypes.SORT_NAME_DESC,
+        payload: breedsSorted,
+      });
     }
 
     if (method === 'Light') {
@@ -36,7 +42,10 @@ export function Sort(method) {
         if (parseInt(a.weight.metric) < parseInt(b.weight.metric)) return -1;
         return 0;
       });
-      return dispatch({ type: actionTypes.SORT_WEIGHT_ASC, payload: breedsSorted });
+      return dispatch({
+        type: actionTypes.SORT_WEIGHT_ASC,
+        payload: breedsSorted,
+      });
     }
 
     if (method === 'Heavy') {
@@ -46,7 +55,10 @@ export function Sort(method) {
         if (parseInt(a.weight.metric) > parseInt(b.weight.metric)) return -1;
         return 0;
       });
-      return dispatch({ type: actionTypes.SORT_WEIGHT_DESC, payload: breedsSorted });
+      return dispatch({
+        type: actionTypes.SORT_WEIGHT_DESC,
+        payload: breedsSorted,
+      });
     }
   };
 }
