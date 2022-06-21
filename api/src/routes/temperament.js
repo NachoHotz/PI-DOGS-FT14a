@@ -1,9 +1,9 @@
-const router = require('express').Router();
+import { Router } from 'express';
 
-const {
-  getTemperaments,
-} = require('../db/controllers/temperament/getTemperaments');
+import * as TemperamentController from '../controllers/temperaments.controller.js';
 
-router.get('/', getTemperaments);
+const router = Router();
 
-module.exports = router;
+router.get('/', TemperamentController.getTemperaments);
+
+export default router;

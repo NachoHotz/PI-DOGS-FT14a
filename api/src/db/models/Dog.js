@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-const { DataTypes, Sequelize, UUIDV4 } = require('sequelize');
+import { DataTypes, Sequelize } from 'sequelize';
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
-module.exports = (sequelize) => {
+export default (sequelize) => {
   // defino el modelo
   sequelize.define(
     'dog',

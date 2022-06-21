@@ -1,24 +1,26 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const routes = require('./routes/index');
-const setHeaders = require('./middlewares/setHeaders');
-const config = require('./lib/config');
+import express, { urlencoded, json } from 'express';
+import cookieParser from 'cookie-parser';
+import routes from './routes/index.js';
+import setHeaders from './middlewares/setHeaders.js';
+import config from './lib/config.js';
 
-require('./db/index');
+import './db/index.js';
 
 const server = express();
 
+const { NODE_ENV } = config;
+
 server.name = 'API';
 
-if (config.NODE_ENV === 'development') {
+if (NODE_ENV === 'development') {
   const morgan = require('morgan');
   server.use(morgan('dev'));
 }
 
-server.use(express.urlencoded({ extended: true, limit: '50mb' }));
-server.use(express.json({ limit: '50mb' }));
+server.use(urlencoded({ extended: true, limit: '50mb' }));
+server.use(json({ limit: '50mb' }));
 server.use(cookieParser());
 server.use(setHeaders);
 
@@ -33,4 +35,4 @@ server.use((err, _req, res, _next) => {
   res.status(status).send(message);
 });
 
-module.exports = server;
+export default server;

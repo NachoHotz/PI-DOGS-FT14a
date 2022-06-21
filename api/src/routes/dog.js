@@ -1,13 +1,11 @@
-const router = require('express').Router();
+import { Router } from 'express';
+import * as DogController from '../controllers/dog.controller.js';
 
-const { getBreeds } = require('../controllers/getBreeds');
-const { getBreedById } = require('../controllers/getBreedById');
-const { createBreed } = require('../db/controllers/dog/createBreed');
-const { deleteBreed } = require('../db/controllers/dog/deleteDog');
+const router = Router();
 
-router.get('/', getBreeds);
-router.get('/:id', getBreedById);
-router.post('/', createBreed);
-router.delete('/:id', deleteBreed);
+router.get('/', DogController.getBreeds);
+router.get('/:id', DogController.getBreedById);
+router.post('/', DogController.createBreed);
+router.delete('/:id', DogController.deleteBreed);
 
-module.exports = router;
+export default router;

@@ -17,14 +17,16 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app');
-const { conn } = require('./src/db/index');
+import server from './src/app.js';
+import { sequelize } from './src/db/index.js';
 
-const config = require('./src/lib/config');
+import config from './src/lib/config.js';
+
+const { API_PORT } = config;
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(config.API_PORT, () => {
-    console.log(`%s listening at ${config.API_PORT}`); // eslint-disable-line no-console
+sequelize.sync({ force: true }).then(() => {
+  server.listen(API_PORT, () => {
+    console.log(`%s listening at ${API_PORT}`); // eslint-disable-line no-console
   });
 });
