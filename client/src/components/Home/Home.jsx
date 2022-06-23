@@ -62,6 +62,7 @@ export default function Home() {
           breed.temperament += breed.temperaments[i].name.toString() + ', ';
         }
       }
+      return breed;
     });
 
     return (

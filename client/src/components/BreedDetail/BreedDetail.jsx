@@ -1,18 +1,15 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBreeds } from '../../redux/actions/types/breedActions';
 import Style from './BreedDetail.module.css';
 
-{
-  /*eslint-disable no-return-assign*/
-}
-
 export default function BreedDetail() {
   const dispatch = useDispatch();
   const breeds = useSelector((state) => state.allBreeds);
-  const { id } = useParams();
+  const params = useParams();
+
+  const { id } = params;
 
   let detail = breeds.filter(
     (breed) => breed.id === id || breed.id === Number(id),

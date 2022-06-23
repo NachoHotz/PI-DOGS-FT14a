@@ -1,92 +1,63 @@
 /* eslint-disable consistent-return */
 /* eslint-disable max-len */
 /* eslint-disable no-plusplus */
-import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
-import { Op } from 'sequelize';
-import { API_URL } from '../endpoints.js';
-import { Dog, Temperament } from '../db/index.js';
-import config from '../lib/config.js';
+import NotFoundException from '../exceptions/NotFoundException.js';
+import InternalServerException from '../exceptions/InternalServerException.js';
+import * as DogService from '../services/dog.service.js';
 
-const { API_KEY } = config;
-
-export async function getBreeds(req, res) {
+export async function getBreeds(req, res, next) {
   try {
     const { name } = req.query;
 
     if (!name) {
-      const dogsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
-      const dogsDb = await Dog.findAll({ include: { model: Temperament } });
+      const allDogs = await DogService.GetAllBreeds(next);
 
-      const promisesResponse = await Promise.all([dogsApi, dogsDb]);
-      const [dogsApiResponse, dogsDbResponse] = promisesResponse;
-
-      return res.json(dogsDbResponse.concat(dogsApiResponse.data));
-    } else {
-      const dogsApi = await axios.get(`${API_URL}?api_key=${API_KEY}`);
-      const dogsDb = await Dog.findAll({
-        where: {
-          name: {
-            [Op.iLike]: `%${name}%`,
-          },
-        },
-        include: { model: Temperament },
-      });
-
-      const promisesResponse = await Promise.all([dogsApi, dogsDb]);
-      const [dogsApiResponse, dogsDbResponse] = promisesResponse;
-
-      const result = dogsDbResponse.concat(dogsApiResponse.data);
-      const finalResults = result.filter((breed) =>
-        breed.name.toLowerCase().includes(name.toLowerCase()),
-      );
-
-      if (finalResults === [] || finalResults.length === 0) {
-        return res.status(404).send({
-          success: false,
-          error: 404,
-          message: 'No dogs found with that name.',
-        });
+      if (!allDogs || allDogs.length === 0) {
+        return next(new NotFoundException('No dogs found'));
       }
-      return res.status(200).json(finalResults);
+
+      return res.status(200).send(allDogs);
+    } else {
+      const allDogs = await DogService.GetAllBreedsByName(name, next);
+
+      if (!allDogs || allDogs.length === 0) {
+        return next(
+          new NotFoundException('No dogs were found with the provided name'),
+        );
+      }
     }
   } catch (e) {
-    return res.status(500).send({
-      success: false,
-      error: 500,
-      message: 'There was an error. Please try again.',
-    });
+    return next(new InternalServerException(e));
   }
 }
 
 export async function getBreedById(req, res, next) {
   try {
-    let breedId = req.params.id;
-    if (req.params.id.length < 4) {
-      breedId = Number(breedId);
-      const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
+    const breedDetail = await DogService.GetBreedById(req.params.id, next);
 
-      const detail = data.find((breed) => breed.id === breedId);
-
-      if (detail) {
-        return res.status(200).json(detail);
-      }
-    }
-    const breedDbId = await Dog.findByPk(breedId, {
-      include: { model: Temperament },
-    });
-
-    if (!breedDbId || breedDbId === {}) {
-      return res.status(404).send({
-        success: false,
-        error: 404,
-        message: 'No dog found with that id.',
-      });
+    if (!breedDetail) {
+      return next(new NotFoundException('No breed found with the provided id'));
     }
 
-    return res.status(200).json(breedDbId);
+    return res.status(200).send(breedDetail);
   } catch (e) {
-    next(e);
+    return next(new InternalServerException(e));
+  }
+}
+
+export async function getBreedsByTemp(req, res, next) {
+  try {
+    const { temp } = req.query;
+
+    const breedsFiltered = await DogService.GetBreedsByTemp(temp, next);
+
+    if (!breedsFiltered || breedsFiltered.length === 0) {
+      return next(new NotFoundException('No breeds found with the provided filters'));
+    }
+
+    return res.status(200).send(breedsFiltered);
+  } catch (e) {
+    return next(new InternalServerException(e));
   }
 }
 
@@ -94,30 +65,11 @@ export async function getBreedById(req, res, next) {
 /* eslint-disable camelcase */
 export async function createBreed(req, res, next) {
   try {
-    const { name, height, weight, life_span, image, temperament } = req.body;
+    const createdBreed = await DogService.CreateBreed(req.body, next);
 
-    const dogExist = await Dog.findOne({ where: { name } });
-
-    if (dogExist) {
-      return res.status(400).send({
-        success: false,
-        error: 400,
-        message: 'There already exists a dog with the given name.',
-      });
-    }
-
-    const createdBreed = await Dog.create({
-      id: uuidv4(),
-      name,
-      height: { metric: height },
-      weight: { metric: weight },
-      life_span,
-      image: { url: image },
-    });
-    await createdBreed.addTemperament(temperament);
-    return res.status(200).json(createdBreed);
+    return res.status(201).send(createdBreed);
   } catch (e) {
-    next(e);
+    return next(new InternalServerException(e));
   }
 }
 
@@ -125,10 +77,10 @@ export async function deleteBreed(req, res, next) {
   try {
     const { id } = req.params;
 
-    await Dog.destroy({ where: { id } });
+    await DogService.DeleteBreed(id, next);
 
     return res.status(200).send('Breed deleted successfully!');
   } catch (e) {
-    next(e);
+    return next(new InternalServerException(e));
   }
 }
