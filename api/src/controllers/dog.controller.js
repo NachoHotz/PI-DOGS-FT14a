@@ -52,7 +52,9 @@ export async function getBreedsByTemp(req, res, next) {
     const breedsFiltered = await DogService.GetBreedsByTemp(temp, next);
 
     if (!breedsFiltered || breedsFiltered.length === 0) {
-      return next(new NotFoundException('No breeds found with the provided filters'));
+      return next(
+        new NotFoundException('No breeds found with the provided filters'),
+      );
     }
 
     return res.status(200).send(breedsFiltered);

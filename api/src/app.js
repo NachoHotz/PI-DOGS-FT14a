@@ -6,8 +6,6 @@ import routes from './routes/index.js';
 import setHeaders from './middlewares/setHeaders.js';
 import errorMiddleware from './middlewares/error.middleware.js';
 
-import './db/index.js';
-
 const server = express();
 
 server.use(urlencoded({ extended: true, limit: '50mb' }));

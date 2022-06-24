@@ -2,8 +2,6 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 import { Sequelize } from 'sequelize';
-import DogModel from './models/Dog.js';
-import TemperamentModel from './models/Temperament.js';
 
 import config from '../lib/config.js';
 
@@ -17,4 +15,4 @@ const sequelize = new Sequelize(
   },
 );
 
-export { DogModel, TemperamentModel, sequelize }; // para importart la conexión { conn } = require('./db.js');
+export default sequelize;

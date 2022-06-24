@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
-import { sequelize, DogModel } from '../index.js';
+import DogModel from './Dog.js';
+import sequelize from '../index.js';
 
 const TemperamentModel = sequelize.define(
   'temperament',
@@ -11,7 +12,7 @@ const TemperamentModel = sequelize.define(
   { timestamps: false },
 );
 
-// set many-to-many relationship
+DogModel.belongsToMany(TemperamentModel, { through: 'dog_temperament' });
 TemperamentModel.belongsToMany(DogModel, { through: 'dog_temperament' });
 
 export default TemperamentModel;

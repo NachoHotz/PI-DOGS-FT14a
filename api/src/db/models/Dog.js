@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { DataTypes, Sequelize } from 'sequelize';
-import { sequelize, TemperamentModel } from '../index.js';
+import sequelize from '../index.js';
 
 const DogModel = sequelize.define(
   'dog',
@@ -37,8 +37,5 @@ const DogModel = sequelize.define(
   },
   { timestamps: false },
 );
-
-// set many-to-many relationship
-DogModel.belongsToMany(TemperamentModel, { through: 'dog_temperament' });
 
 export default DogModel;
