@@ -1,7 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable max-len */
 /* eslint-disable no-plusplus */
-import BadRequestException from '../exceptions/BadRequestException.js';
 import NotFoundException from '../exceptions/NotFoundException.js';
 import InternalServerException from '../exceptions/InternalServerException.js';
 import * as DogService from '../services/dog.service.js';

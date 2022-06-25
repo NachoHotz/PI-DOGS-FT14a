@@ -38,11 +38,9 @@ export async function GetAllBreedsByName(name, next) {
     const [dogsApiResponse, dogsDbResponse] = promisesResponse;
 
     const result = dogsDbResponse.concat(dogsApiResponse.data);
-    const finalResults = result.filter((breed) =>
+    return result.filter((breed) =>
       breed.name.toLowerCase().includes(name.toLowerCase()),
     );
-
-    return finalResults;
   } catch (e) {
     return next(new InternalServerException(e.message));
   }
@@ -55,16 +53,12 @@ export async function GetBreedById(id, next) {
 
       const { data } = await axios.get(API_URL);
 
-      const detail = data.find((breed) => breed.id === breedId);
-
-      return detail;
+      return data.find((breed) => breed.id === breedId);
     }
 
-    const breedDbId = await DogModel.findByPk(id, {
+    return await DogModel.findByPk(id, {
       include: { model: TemperamentModel },
     });
-
-    return breedDbId;
   } catch (e) {
     return next(new InternalServerException(e.message));
   }
@@ -85,9 +79,7 @@ export async function GetBreedsByTemp(temp, next) {
     const promisesResponse = await Promise.all([dogsApi, dogsDb]);
     const [dogsApiResponse, dogsDbResponse] = promisesResponse;
 
-    const result = dogsDbResponse.concat(dogsApiResponse.data);
-
-    return result;
+    return dogsDbResponse.concat(dogsApiResponse.data);
   } catch (e) {
     return next(new InternalServerException(e.message));
   }
