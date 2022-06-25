@@ -1,6 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-plusplus */
-/* eslint-disable no-await-in-loop */
 import InternalServerException from '../exceptions/InternalServerException.js';
 import * as TemperamentService from '../services/temperament.service.js';
 
