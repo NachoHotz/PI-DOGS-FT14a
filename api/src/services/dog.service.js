@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Op } from 'sequelize';
 import { API_URL } from '../constants/endpoints.js';
 import DogModel from '../db/models/Dog.js';
+import TemperamentModel from '../db/models/Temperament.js';
 import BadRequestException from '../exceptions/BadRequestException.js';
 import InternalServerException from '../exceptions/InternalServerException.js';
 
@@ -10,15 +11,15 @@ export async function GetAllBreeds(next) {
   try {
     const dogsApi = await axios.get(API_URL);
     const dogsDb = await DogModel.findAll({
-      include: { model: Temperament },
+      include: { model: TemperamentModel },
     });
 
     const promisesResponse = await Promise.all([dogsApi, dogsDb]);
     const [dogsApiResponse, dogsDbResponse] = promisesResponse;
 
-    return dogsDbResponse.concat(dogsApiResponse);
+    return dogsDbResponse.concat(dogsApiResponse.data);
   } catch (e) {
-    return next(new InternalServerException(e));
+    return next(new InternalServerException(e.message));
   }
 }
 
@@ -31,9 +32,8 @@ export async function GetAllBreedsByName(name, next) {
           [Op.iLike]: `%${name}%`,
         },
       },
-      include: { model: Temperament },
+      include: { model: TemperamentModel },
     });
-
     const promisesResponse = await Promise.all([dogsApi, dogsDb]);
     const [dogsApiResponse, dogsDbResponse] = promisesResponse;
 
@@ -44,7 +44,7 @@ export async function GetAllBreedsByName(name, next) {
 
     return finalResults;
   } catch (e) {
-    return next(new InternalServerException(e));
+    return next(new InternalServerException(e.message));
   }
 }
 
@@ -57,18 +57,16 @@ export async function GetBreedById(id, next) {
 
       const detail = data.find((breed) => breed.id === breedId);
 
-      if (detail) {
-        return res.status(200).json(detail);
-      }
+      return detail;
     }
 
     const breedDbId = await DogModel.findByPk(id, {
-      include: { model: Temperament },
+      include: { model: TemperamentModel },
     });
 
-    return res.status(200).json(breedDbId);
+    return breedDbId;
   } catch (e) {
-    return next(new InternalServerException(e));
+    return next(new InternalServerException(e.message));
   }
 }
 
@@ -81,7 +79,7 @@ export async function GetBreedsByTemp(temp, next) {
           [Op.iLike]: `%${temp}%`,
         },
       },
-      include: { model: Temperament },
+      include: { model: TemperamentModel },
     });
 
     const promisesResponse = await Promise.all([dogsApi, dogsDb]);
@@ -91,7 +89,7 @@ export async function GetBreedsByTemp(temp, next) {
 
     return result;
   } catch (e) {
-    return next(new InternalServerException(e));
+    return next(new InternalServerException(e.message));
   }
 }
 
@@ -121,13 +119,14 @@ export async function CreateBreed(breedInfo, next) {
 
     return createdBreed;
   } catch (e) {
-    return next(new InternalServerException(e));
+    return next(new InternalServerException(e.message));
   }
 }
 
 export async function DeleteBreed(id, next) {
   try {
     const breed = await DogModel.findByPk(id);
+    console.log('breed', breed);
 
     if (!breed) {
       return next(
@@ -137,6 +136,6 @@ export async function DeleteBreed(id, next) {
 
     await breed.destroy();
   } catch (e) {
-    return next(new InternalServerException(e));
+    return next(new InternalServerException(e.message));
   }
 }

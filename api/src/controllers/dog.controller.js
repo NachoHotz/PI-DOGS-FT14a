@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable max-len */
 /* eslint-disable no-plusplus */
+import BadRequestException from '../exceptions/BadRequestException.js';
 import NotFoundException from '../exceptions/NotFoundException.js';
 import InternalServerException from '../exceptions/InternalServerException.js';
 import * as DogService from '../services/dog.service.js';
@@ -13,7 +14,7 @@ export async function getBreeds(req, res, next) {
       const allDogs = await DogService.GetAllBreeds(next);
 
       if (!allDogs || allDogs.length === 0) {
-        return next(new NotFoundException('No dogs found'));
+        return next(new NotFoundException('No dogs were found'));
       }
 
       return res.status(200).send(allDogs);
@@ -25,9 +26,11 @@ export async function getBreeds(req, res, next) {
           new NotFoundException('No dogs were found with the provided name'),
         );
       }
+
+      return res.status(200).send(allDogs);
     }
   } catch (e) {
-    return next(new InternalServerException(e));
+    return next(new InternalServerException(e.message));
   }
 }
 
@@ -41,7 +44,7 @@ export async function getBreedById(req, res, next) {
 
     return res.status(200).send(breedDetail);
   } catch (e) {
-    return next(new InternalServerException(e));
+    return next(new InternalServerException(e.message));
   }
 }
 
@@ -59,7 +62,7 @@ export async function getBreedsByTemp(req, res, next) {
 
     return res.status(200).send(breedsFiltered);
   } catch (e) {
-    return next(new InternalServerException(e));
+    return next(new InternalServerException(e.message));
   }
 }
 
@@ -71,7 +74,7 @@ export async function createBreed(req, res, next) {
 
     return res.status(201).send(createdBreed);
   } catch (e) {
-    return next(new InternalServerException(e));
+    return next(new InternalServerException(e.message));
   }
 }
 
@@ -83,6 +86,6 @@ export async function deleteBreed(req, res, next) {
 
     return res.status(200).send('Breed deleted successfully!');
   } catch (e) {
-    return next(new InternalServerException(e));
+    return next(new InternalServerException(e.message));
   }
 }
