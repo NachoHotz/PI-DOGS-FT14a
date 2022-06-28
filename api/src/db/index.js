@@ -3,9 +3,9 @@
 /* eslint-disable global-require */
 import { Sequelize } from 'sequelize';
 
-import config from '../lib/config.js';
+import { envConfig } from '../config/index.js';
 
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = config;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = envConfig;
 
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,

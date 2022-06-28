@@ -2,9 +2,9 @@ import server from './src/server.js';
 import sequelize from './src/db/index.js';
 import './src/db/index.js';
 
-import config from './src/lib/config.js';
+import { envConfig } from './src/config/index.js';
 
-const { API_PORT, NODE_ENV } = config;
+const { API_PORT, NODE_ENV } = envConfig;
 
 // Syncing all the models at once.
 sequelize
