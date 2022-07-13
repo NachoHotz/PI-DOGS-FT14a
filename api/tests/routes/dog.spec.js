@@ -3,7 +3,8 @@
 const { expect } = require('chai');
 const session = require('supertest-session');
 const app = require('../../src/app');
-const { Dog, conn } = require('../../src/db/index');
+const Dog = require('../../src/db/models/Dog');
+const sequelize = require('../../src/db/index').default;
 
 const agent = session(app);
 const dog = {
@@ -16,7 +17,7 @@ const dog = {
 
 describe('Dog routes', () => {
   before(() =>
-    conn.authenticate().catch((err) => {
+    sequelize.authenticate().catch((err) => {
       console.error('Unable to connect to the database:', err);
     }),
   );

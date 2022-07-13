@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
-const { expect } = require('chai');
-const { Dog, conn } = require('../../src/db/index');
+const Dog = require('../../src/db/models/Dog');
+const sequelize = require('../../src/db/index').default;
 
 describe('Dog model', () => {
   before(() =>
-    conn.authenticate().catch((err) => {
+    sequelize.authenticate().catch((err) => {
       console.error('Unable to connect to the database:', err);
     }),
   );

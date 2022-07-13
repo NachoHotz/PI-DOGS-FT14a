@@ -12,6 +12,6 @@ sequelize
   .then(() => {
     console.log('Database connected successfully');
     server.listen(API_PORT, () => {
-      console.log(`Server runnning on PORT ${API_PORT}`); // eslint-disable-line no-console
+      console.log(`Server runnning on PORT ${API_PORT}`);
     });
   });
