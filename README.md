@@ -80,18 +80,4 @@ Then, execute `npm start` on both folders to initialize the database, and the cl
 
 ## Screenshots
 
-#### Landing Page
-
-![Landing](https://user-images.githubusercontent.com/72778896/132437674-45b0dd69-d5b8-436f-9b2f-3761f49c549e.jpg)
-
-#### Home Page
-
-![Home](https://user-images.githubusercontent.com/72778896/132437689-275649f2-250c-4abb-9caf-5c5987bca08e.jpg)
-
-#### Detail Page
-
-![Detail](https://user-images.githubusercontent.com/72778896/132437708-c86c8b62-caf0-4867-8a60-85e655b5786e.jpg)
-
-#### Create page
-
-![Create form](https://user-images.githubusercontent.com/72778896/132437721-da688eb4-c627-4d07-bba2-d73aae4e1e67.jpg)
+# This project is being updated
