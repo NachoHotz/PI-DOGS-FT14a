@@ -1,6 +1,6 @@
 # Dogspedia - SPA
 
-![Logo](https://raw.githubusercontent.com/NachoHotz/Dogspedia/main/dog.png)
+![Logo](https://raw.githubusercontent.com/NachoHotz/Dogspedia/main/client/public/assets/dog.png)
 
 Single Page application for the all dog lovers out there.
 

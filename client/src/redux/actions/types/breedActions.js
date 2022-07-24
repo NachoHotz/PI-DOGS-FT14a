@@ -3,11 +3,7 @@
 /* eslint-disable import/prefer-default-export */
 import * as ActionTypes from '../names';
 import ClientAxios from '../../../config/api/axios';
-import {
-  GET_ALL_BREEDS,
-  GET_DETAIL,
-  CREATE_BREED,
-} from '../../../config/api/endpoints';
+import { GET_ALL_BREEDS, CREATE_BREED } from '../../../config/api/endpoints';
 
 export function getBreeds() {
   return async function (dispatch) {

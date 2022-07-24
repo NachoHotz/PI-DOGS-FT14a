@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBreeds } from '../../redux/actions/types/breedActions';
 import Style from './BreedDetail.module.css';
@@ -17,8 +17,7 @@ export default function BreedDetail() {
 
   useEffect(() => {
     dispatch(getBreeds());
-    return () => (detail = {});
-  }, []);
+  }, [dispatch]);
 
   if (detail[0].id.length > 3) {
     detail[0].temperament = '';

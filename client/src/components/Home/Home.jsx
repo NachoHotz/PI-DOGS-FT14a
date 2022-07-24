@@ -6,6 +6,7 @@ import Nav from '../Nav/Nav';
 import Filter from '../filters/Filter';
 import Order from '../Order/Order';
 import Style from './Home.module.css';
+import BreedCard from '../BreedCard/BreedCard';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -68,17 +69,13 @@ export default function Home() {
     return (
       <main className={Style.body}>
         {current.map((breed) => (
-          <article key={breed.id} className={Style.container}>
-            <Link to={`/home/${breed.id}`}>
-              <img
-                className={Style.image}
-                src={breed.image.url}
-                alt="Not found"
-              />
-            </Link>
-            <h4 className={Style.name}>{breed.name}</h4>
-            <h5 className={Style.temperament}>{breed.temperament}</h5>
-          </article>
+          <BreedCard
+            key={breed.id}
+            picture={breed.image.url}
+            id={breed.id}
+            name={breed.name}
+            temperaments={breed.temperament}
+          />
         ))}
       </main>
     );
