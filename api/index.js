@@ -1,4 +1,4 @@
-import server from './src/v1/server.js';
+import server from './src/server.js';
 import sequelize from './src/v1/db/index.js';
 import { envConfig } from './src/v1/config/index.js';
 import './src/v1/db/index.js';

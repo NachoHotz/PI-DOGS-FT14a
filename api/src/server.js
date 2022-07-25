@@ -4,9 +4,9 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import cors from 'cors';
-import routes from './routes/index.js';
-import errorMiddleware from './middlewares/error.middleware.js';
-import { corsOptions } from './config/index.js';
+import v1Routes from './v1/routes/index.js';
+import errorMiddleware from './v1/middlewares/error.middleware.js';
+import { corsOptions } from './v1/config/index.js';
 
 const server = express();
 
@@ -16,7 +16,7 @@ server.use(cookieParser());
 server.use(helmet({ hidePoweredBy: true }));
 server.use(cors(corsOptions));
 
-server.use('/', routes);
+server.use('/api/v1', v1Routes);
 server.use(errorMiddleware);
 
 export default server;
