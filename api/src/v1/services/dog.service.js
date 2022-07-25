@@ -2,8 +2,8 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { Op } from 'sequelize';
 import { API_URL } from '../constants/endpoints.js';
-import DogModel from '../db/models/Dog.js';
-import TemperamentModel from '../db/models/Temperament.js';
+import DogModel from '../../db/models/Dog.js';
+import TemperamentModel from '../../db/models/Temperament.js';
 import BadRequestException from '../exceptions/BadRequestException.js';
 import InternalServerException from '../exceptions/InternalServerException.js';
 
