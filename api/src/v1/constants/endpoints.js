@@ -1,4 +1,4 @@
-import { envConfig } from '../config/index.js';
+import { envConfig } from '../../config/index.js';
 
 const { API_KEY } = envConfig;
 

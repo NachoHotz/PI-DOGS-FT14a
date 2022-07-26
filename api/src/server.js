@@ -6,7 +6,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import v1Routes from './v1/routes/index.js';
 import errorMiddleware from './v1/middlewares/error.middleware.js';
-import { corsOptions } from './v1/config/index.js';
+import { corsOptions } from './config/index.js';
 
 const server = express();
 

@@ -3,7 +3,7 @@
 /* eslint-disable global-require */
 import { Sequelize } from 'sequelize';
 
-import { envConfig } from '../v1/config/env.js';
+import { envConfig } from '../config/env.js';
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = envConfig;
 
