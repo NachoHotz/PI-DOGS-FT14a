@@ -1,5 +1,5 @@
 import axios from 'axios';
-import TemperamentModel from '../../db/models/Temperament.js';
+import TemperamentModel from '../../db/models/TemperamentModel.js';
 import InternalServerException from '../exceptions/InternalServerException.js';
 import { API_URL } from '../constants/endpoints.js';
 
@@ -21,9 +21,8 @@ export async function GetAllTemperaments(next) {
       );
 
       // Saves the temperaments in the database if they don't exist
-      temperamentsList.forEach(
-        async (temp) =>
-          await TemperamentModel.findOrCreate({ where: { name: temp } }),
+      temperamentsList.forEach(async (temp) =>
+        TemperamentModel.findOrCreate({ where: { name: temp } }),
       );
 
       // Return the temperaments from the database

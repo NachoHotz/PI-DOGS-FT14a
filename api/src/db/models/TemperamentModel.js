@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import DogModel from './Dog.js';
+import DogModel from './DogModel.js';
 import sequelize from '../index.js';
 
 const TemperamentModel = sequelize.define(

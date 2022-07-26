@@ -1,7 +1,6 @@
 import server from './src/server.js';
 import sequelize from './src/db/index.js';
 import { envConfig } from './src/config/index.js';
-import './src/db/index.js';
 
 const { API_PORT, NODE_ENV } = envConfig;
 
