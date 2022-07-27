@@ -18,7 +18,6 @@ server.use(helmet({ hidePoweredBy: true }));
 server.use(cors(corsOptions));
 
 server.use('/api/v1', v1Routes);
-
 server.use('*', (_req, _res, next) => {
   return next(new NotFoundException('This route does not exist'));
 });
