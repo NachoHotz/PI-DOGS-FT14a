@@ -1,6 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable max-len */
-/* eslint-disable no-plusplus */
 import NotFoundException from '../exceptions/NotFoundException.js';
 import InternalServerException from '../exceptions/InternalServerException.js';
 import * as DogService from '../services/dog.service.js';
@@ -65,8 +62,6 @@ export async function getBreedsByTemp(req, res, next) {
   }
 }
 
-/* eslint-disable consistent-return */
-/* eslint-disable camelcase */
 export async function createBreed(req, res, next) {
   try {
     const createdBreed = await DogService.CreateBreed(req.body, next);

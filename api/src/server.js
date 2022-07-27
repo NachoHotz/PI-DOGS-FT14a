@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable import/no-extraneous-dependencies */
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
