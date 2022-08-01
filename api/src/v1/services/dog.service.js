@@ -68,11 +68,6 @@ export async function GetBreedsByTemp(temp, next) {
   try {
     const dogsApi = await axios.get(API_URL);
     const dogsDb = await DogModel.findAll({
-      where: {
-        temperament: {
-          [Op.iLike]: `%${temp}%`,
-        },
-      },
       include: { model: TemperamentModel },
     });
 

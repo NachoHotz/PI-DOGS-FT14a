@@ -46,7 +46,7 @@ export async function getBreedById(req, res, next) {
 
 export async function getBreedsByTemp(req, res, next) {
   try {
-    const { temp } = req.query;
+    const { temp } = req.params;
 
     const breedsFiltered = await DogService.GetBreedsByTemp(temp, next);
 
