@@ -1,7 +1,4 @@
-import dotenv from 'dotenv';
-import { envConfig } from './env';
-
-dotenv.config();
+import { envConfig } from './env.js';
 
 const { NODE_ENV } = envConfig;
 
