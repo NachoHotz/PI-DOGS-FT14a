@@ -21,9 +21,10 @@ export async function GetAllTemperaments(next) {
       );
 
       // Saves the temperaments in the database if they don't exist
-      temperamentsList.forEach(async (temp) =>
-        TemperamentModel.findOrCreate({ where: { name: temp } }),
-      );
+
+      for (let i = 0; i < temperamentsList.length; i++) {
+        TemperamentModel.findOrCreate({ where: { name: temperamentsList[i] } });
+      }
 
       // Return the temperaments from the database
       return TemperamentModel.findAll();
