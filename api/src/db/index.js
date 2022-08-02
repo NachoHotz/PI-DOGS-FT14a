@@ -1,6 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
 import { Sequelize } from 'sequelize';
 
 import { envConfig } from '../config/env.js';

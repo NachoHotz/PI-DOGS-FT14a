@@ -4,7 +4,6 @@ import { envConfig } from './src/config/index.js';
 
 const { API_PORT, NODE_ENV } = envConfig;
 
-// Syncing all the models at once.
 sequelize
   .sync({ force: NODE_ENV === 'development' ? true : false })
   .then(() => {

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { DataTypes, Sequelize } from 'sequelize';
 import sequelize from '../index.js';
 
