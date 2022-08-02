@@ -5,9 +5,10 @@ import * as DogService from '../services/dog.service.js';
 export async function getBreeds(req, res, next) {
   try {
     const { name } = req.query;
+    let allDogs;
 
     if (!name) {
-      const allDogs = await DogService.GetAllBreeds(next);
+      allDogs = await DogService.GetAllBreeds(next, name);
 
       if (!allDogs || allDogs.length === 0) {
         return next(new NotFoundException('No dogs were found'));
@@ -15,9 +16,9 @@ export async function getBreeds(req, res, next) {
 
       return res.status(200).send(allDogs);
     } else {
-      const allDogs = await DogService.GetAllBreedsByName(name, next);
+      allDogs = await DogService.GetAllBreeds(next, name);
 
-      if (!allDogs || allDogs.length === 0) {
+      if (allDogs || allDogs.length === 0) {
         return next(
           new NotFoundException('No dogs were found with the provided name'),
         );

@@ -7,40 +7,38 @@ import TemperamentModel from '../../db/models/TemperamentModel.js';
 import BadRequestException from '../exceptions/BadRequestException.js';
 import InternalServerException from '../exceptions/InternalServerException.js';
 
-export async function GetAllBreeds(next) {
+export async function GetAllBreeds(next, name) {
   try {
     const dogsApi = await axios.get(API_URL);
-    const dogsDb = await DogModel.findAll({
-      include: { model: TemperamentModel },
-    });
 
-    const promisesResponse = await Promise.all([dogsApi, dogsDb]);
-    const [dogsApiResponse, dogsDbResponse] = promisesResponse;
+    let dogsDb;
+    let promisesResponse;
 
-    return dogsDbResponse.concat(dogsApiResponse.data);
-  } catch (e) {
-    return next(new InternalServerException(e.message));
-  }
-}
+    if (!name) {
+      dogsDb = await DogModel.findAll({
+        include: { model: TemperamentModel },
+      });
+      promisesResponse = await Promise.all([dogsApi, dogsDb]);
+      const [dogsApiResponse, dogsDbResponse] = promisesResponse;
 
-export async function GetAllBreedsByName(name, next) {
-  try {
-    const dogsApi = await axios.get(API_URL);
-    const dogsDb = await DogModel.findAll({
-      where: {
-        name: {
-          [Op.iLike]: `%${name}%`,
+      return dogsDbResponse.concat(dogsApiResponse.data);
+    } else {
+      dogsDb = await DogModel.findAll({
+        where: {
+          name: {
+            [Op.iLike]: `%${name}%`,
+          },
         },
-      },
-      include: { model: TemperamentModel },
-    });
-    const promisesResponse = await Promise.all([dogsApi, dogsDb]);
-    const [dogsApiResponse, dogsDbResponse] = promisesResponse;
+        include: { model: TemperamentModel },
+      });
+      promisesResponse = await Promise.all([dogsApi, dogsDb]);
+      const [dogsApiResponse, dogsDbResponse] = promisesResponse;
 
-    const result = dogsDbResponse.concat(dogsApiResponse.data);
-    return result.filter((breed) =>
-      breed.name.toLowerCase().includes(name.toLowerCase()),
-    );
+      const result = dogsDbResponse.concat(dogsApiResponse.data);
+      return result.filter((breed) =>
+        breed.name.toLowerCase().includes(name.toLowerCase()),
+      );
+    }
   } catch (e) {
     return next(new InternalServerException(e.message));
   }
@@ -64,7 +62,7 @@ export async function GetBreedById(id, next) {
   }
 }
 
-export async function GetBreedsByTemp(temp, next) {
+export async function GetBreedsByTemp(_temp, next) {
   try {
     const dogsApi = await axios.get(API_URL);
     const dogsDb = await DogModel.findAll({
