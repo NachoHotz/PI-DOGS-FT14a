@@ -18,7 +18,7 @@ export async function getBreeds(req, res, next) {
     } else {
       allDogs = await DogService.GetAllBreeds(next, name);
 
-      if (allDogs || allDogs.length === 0) {
+      if (!allDogs || allDogs.length === 0) {
         return next(
           new NotFoundException('No dogs were found with the provided name'),
         );
