@@ -113,7 +113,6 @@ export async function CreateBreed(breedInfo, next) {
 export async function DeleteBreed(id, next) {
   try {
     const breed = await DogModel.findByPk(id);
-    console.log('breed', breed);
 
     if (!breed) {
       return next(
