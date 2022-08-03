@@ -80,8 +80,10 @@ export async function GetBreedsByTemp(_temp, next) {
 
 export async function CreateBreed(breedInfo, next) {
   try {
+    const { name, height, weight, life_span, image, temperaments } = breedInfo;
+
     const dogExists = await DogModel.findOne({
-      where: { name: breedInfo.name },
+      where: { name: name },
     });
 
     if (dogExists) {
@@ -94,13 +96,13 @@ export async function CreateBreed(breedInfo, next) {
 
     const createdBreed = await DogModel.create({
       id: uuidv4(),
-      name: breedInfo.name,
-      height: { metric: breedInfo.height },
-      weight: { metric: breedInfo.weight },
-      life_span: breedInfo.life_span,
-      image: { url: breedInfo.image },
+      name: name,
+      height: { metric: height },
+      weight: { metric: weight },
+      life_span: life_span,
+      image: { url: image ? image : null },
     });
-    await createdBreed.addTemperament(breedInfo.temperament);
+    await createdBreed.addTemperament(temperaments);
 
     return createdBreed;
   } catch (e) {
