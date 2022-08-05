@@ -42,6 +42,8 @@ To run this project, first you will need to add the following environment variab
 
 `NODE_ENV` - the Server current environment for good connection with the client
 
+**NOTE**: You can also check the `.env.example` file to see envs example values.
+
 #### The import and use of these environment variables is already done by the app
 
 Then, follow the steps below:
