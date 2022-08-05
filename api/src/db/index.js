@@ -1,5 +1,4 @@
 import { Sequelize } from 'sequelize';
-
 import { envConfig } from '../config/env.js';
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = envConfig;
