@@ -45,24 +45,6 @@ export async function getBreedById(req, res, next) {
   }
 }
 
-export async function getBreedsByTemp(req, res, next) {
-  try {
-    const { temp } = req.params;
-
-    const breedsFiltered = await DogService.GetBreedsByTemp(temp, next);
-
-    if (!breedsFiltered || breedsFiltered.length === 0) {
-      return next(
-        new NotFoundException('No breeds found with the provided filters'),
-      );
-    }
-
-    return res.status(200).send(breedsFiltered);
-  } catch (e) {
-    return next(new InternalServerException(e.message));
-  }
-}
-
 export async function createBreed(req, res, next) {
   try {
     const createdBreed = await DogService.CreateBreed(req.body, next);
