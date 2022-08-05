@@ -40,6 +40,8 @@ To run this project, first you will need to add the following environment variab
 
 `API_PORT` - the port from where your api is listening
 
+`NODE_ENV` - the Server current environment for good connection with the client
+
 #### The import and use of these environment variables is already done by the app
 
 Then, follow the steps below:
