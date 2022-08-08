@@ -23,14 +23,7 @@ export async function GetAllBreeds(next, name) {
 
       return dogsDbResponse.concat(dogsApiResponse.data);
     } else {
-      dogsDb = await DogModel.findAll({
-        where: {
-          name: {
-            [Op.iLike]: `%${name}%`,
-          },
-        },
-        include: { model: TemperamentModel },
-      });
+      dogsDb = await DogModel.findAll({ include: { model: TemperamentModel } });
       promisesResponse = await Promise.all([dogsApi, dogsDb]);
       const [dogsApiResponse, dogsDbResponse] = promisesResponse;
 
@@ -88,7 +81,7 @@ export async function CreateBreed(breedInfo, next) {
     });
     await createdBreed.addTemperament(temperaments);
 
-    return createdBreed;
+    return DogModel.findByPk(createdBreed.id, { include: { model: TemperamentModel } });
   } catch (e) {
     return next(new InternalServerException(e.message));
   }
