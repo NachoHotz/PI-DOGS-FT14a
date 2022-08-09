@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-import { Op } from 'sequelize';
 import { API_URL } from '../constants/endpoints.js';
 import DogModel from '../../db/models/DogModel.js';
 import TemperamentModel from '../../db/models/TemperamentModel.js';
@@ -81,7 +80,9 @@ export async function CreateBreed(breedInfo, next) {
     });
     await createdBreed.addTemperament(temperaments);
 
-    return DogModel.findByPk(createdBreed.id, { include: { model: TemperamentModel } });
+    return DogModel.findByPk(createdBreed.id, {
+      include: { model: TemperamentModel },
+    });
   } catch (e) {
     return next(new InternalServerException(e.message));
   }
