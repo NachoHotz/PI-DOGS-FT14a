@@ -17,12 +17,14 @@ export async function GetAllBreeds(next, name) {
       dogsDb = await DogModel.findAll({
         include: { model: TemperamentModel },
       });
+
       promisesResponse = await Promise.all([dogsApi, dogsDb]);
       const [dogsApiResponse, dogsDbResponse] = promisesResponse;
 
       return dogsDbResponse.concat(dogsApiResponse.data);
     } else {
       dogsDb = await DogModel.findAll({ include: { model: TemperamentModel } });
+
       promisesResponse = await Promise.all([dogsApi, dogsDb]);
       const [dogsApiResponse, dogsDbResponse] = promisesResponse;
 
