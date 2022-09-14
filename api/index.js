@@ -8,7 +8,7 @@ sequelize
   .sync({ force: NODE_ENV === 'development' ? true : false })
   .then(() => {
     console.log('Database connected successfully');
-    server.listen(process.env.PORT || API_PORT, () => {
+    server.listen(API_PORT, () => {
       console.log(`Server runnning on PORT ${API_PORT}`);
     });
   });
