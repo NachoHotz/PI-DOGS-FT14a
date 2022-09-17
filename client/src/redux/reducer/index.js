@@ -1,9 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-case-declarations */
-/* eslint-disable arrow-parens */
-/*eslint-disable radix*/
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable func-names */
 import * as actionTypes from '../actions/names';
 
 const initialState = {
