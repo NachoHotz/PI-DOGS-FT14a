@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export default function BreedCard(props) {
   return (
     <article>
-      <Link to={`home/${props.id}`}>
+      <Link to={`/${props.id}`}>
         <img src={props.picture} alt={props.name} />
       </Link>
       <h4>{props.name}</h4>
