@@ -8,6 +8,8 @@ import { corsOptions } from './config/index.js';
 
 const server = express();
 
+console.log(corsOptions)
+
 server.use(express.urlencoded({ extended: true, limit: '50mb' }));
 server.use(express.json({ limit: '50mb' }));
 server.use(helmet({ hidePoweredBy: true }));
