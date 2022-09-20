@@ -4,7 +4,7 @@ dotenv.config();
 
 export const envConfig = {
   API_KEY: process.env.API_KEY,
-  API_PORT: process.env.API_PORT,
+  PORT: process.env.PORT,
   CLIENT_DEV_URL: process.env.CLIENT_DEV_URL,
   CLIENT_PROD_URL: process.env.CLIENT_PROD_URL,
   DB_USER: process.env.DB_USER,
