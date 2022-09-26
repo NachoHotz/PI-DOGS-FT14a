@@ -11,9 +11,7 @@ export async function GetAllTemperaments(next) {
       const { data } = await axios.get(API_URL);
 
       // Creates a new array of arrays with every temperament from every breed
-      let temperamentsList = data.map((breed) =>
-        breed.temperament?.split(', '),
-      );
+      let temperamentsList = data.map((breed) => breed.temperament?.split(', '));
 
       // Flattens the array and removes duplicates as well as undefined values
       temperamentsList = [...new Set(temperamentsList.flat(2))].filter(
@@ -21,15 +19,15 @@ export async function GetAllTemperaments(next) {
       );
 
       // Saves the temperaments in the database if they don't exist
-      for (let temp of temperamentsList) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const temp of temperamentsList) {
         TemperamentModel.findOrCreate({ where: { name: temp } });
       }
 
       // Return the temperaments from the database
       return TemperamentModel.findAll();
-    } else {
-      return temperamentInDb;
     }
+    return temperamentInDb;
   } catch (e) {
     return next(new InternalServerException(e.message));
   }

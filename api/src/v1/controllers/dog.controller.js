@@ -15,17 +15,16 @@ export async function getBreeds(req, res, next) {
       }
 
       return res.status(200).send(allDogs);
-    } else {
-      allDogs = await DogService.GetAllBreeds(next, name);
-
-      if (!allDogs || allDogs.length === 0) {
-        return next(
-          new NotFoundException('No dogs were found with the provided name'),
-        );
-      }
-
-      return res.status(200).send(allDogs);
     }
+    allDogs = await DogService.GetAllBreeds(next, name);
+
+    if (!allDogs || allDogs.length === 0) {
+      return next(
+        new NotFoundException('No dogs were found with the provided name'),
+      );
+    }
+
+    return res.status(200).send(allDogs);
   } catch (e) {
     return next(new InternalServerException(e.message));
   }

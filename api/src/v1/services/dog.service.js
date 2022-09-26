@@ -22,17 +22,14 @@ export async function GetAllBreeds(next, name) {
       const [dogsApiResponse, dogsDbResponse] = promisesResponse;
 
       return dogsDbResponse.concat(dogsApiResponse.data);
-    } else {
-      dogsDb = await DogModel.findAll({ include: { model: TemperamentModel } });
-
-      promisesResponse = await Promise.all([dogsApi, dogsDb]);
-      const [dogsApiResponse, dogsDbResponse] = promisesResponse;
-
-      const result = dogsDbResponse.concat(dogsApiResponse.data);
-      return result.filter((breed) =>
-        breed.name.toLowerCase().includes(name.toLowerCase()),
-      );
     }
+    dogsDb = await DogModel.findAll({ include: { model: TemperamentModel } });
+
+    promisesResponse = await Promise.all([dogsApi, dogsDb]);
+    const [dogsApiResponse, dogsDbResponse] = promisesResponse;
+
+    const result = dogsDbResponse.concat(dogsApiResponse.data);
+    return result.filter((breed) => breed.name.toLowerCase().includes(name.toLowerCase()));
   } catch (e) {
     return next(new InternalServerException(e.message));
   }
@@ -58,10 +55,12 @@ export async function GetBreedById(id, next) {
 
 export async function CreateBreed(breedInfo, next) {
   try {
-    const { name, height, weight, life_span, image, temperaments } = breedInfo;
+    const {
+      name, height, weight, life_span, image, temperaments,
+    } = breedInfo;
 
     const dogExists = await DogModel.findOne({
-      where: { name: name },
+      where: { name },
     });
 
     if (dogExists) {
@@ -74,11 +73,12 @@ export async function CreateBreed(breedInfo, next) {
 
     const createdBreed = await DogModel.create({
       id: uuidv4(),
-      name: name,
+      name,
       height: { metric: height },
       weight: { metric: weight },
-      life_span: life_span,
-      image: { url: image ? image : null },
+      // eslint-disable-next-line camelcase
+      life_span,
+      image: { url: image || null },
     });
     await createdBreed.addTemperament(temperaments);
 

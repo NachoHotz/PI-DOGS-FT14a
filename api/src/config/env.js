@@ -13,4 +13,5 @@ export const envConfig = {
   DB_NAME: process.env.DB_NAME,
   DB_PORT: process.env.DB_PORT,
   NODE_ENV: process.env.NODE_ENV,
+  SENTRY_DSN: process.env.SENTRY_DSN,
 };
