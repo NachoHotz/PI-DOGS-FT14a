@@ -11,4 +11,6 @@ sequelize
     server.listen(PORT || 3001, () => {
       console.log(`Server runnning on PORT ${PORT}`);
     });
+  }).catch((error) => {
+    console.error(`Database connection error: ${error}`)
   });
