@@ -37,9 +37,5 @@
     "nodemon": "^2.0.16",
     "supertest": "^6.2.3",
     "supertest-session": "^4.1.0"
-  },
-  "engines": {
-    "node": "16.14.0",
-    "npm": "8.3.1"
   }
 }
